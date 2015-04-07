@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Skånetrafiken</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="Tema.css">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <style>
+        .custom {
+            width: 150px !important;
+        }
+    </style>
+
+    <style> .supermes2{
+        margin-left:auto; margin-right:auto; width:80%
+    }
+    </style>
+
+    <style>
+        .journeytimeline {
+            width: 80%;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"> </a>
+        </div>
+        <br>
+        <p align="center">
+            <a href="/" class="btn btn-default"><i class="glyphicon glyphicon-home"></i> Home</a>
+        </p>
+        <p class="text-center h1">Welcome to Skanetrafiken!</p>
+        <p class="text-center h4">Signed in as: Victoria Nordin</p>
+    </div>
+</nav>
+
+<div class="supermes2"><h5>Traffic overview</h5></div>
+
+
+<div class="supermes2">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+        <tr class="info">
+            <th> - </th>
+            <th>Show:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> All</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Accidents</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><span class="glyphicon glyphicon-road" aria-hidden="true"></span> Roadworks</td>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Buses</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Nothing</td>
+        </tr>
+        </tbody></table>
+</div>
+
+    <p align="center">
+        <img src="kartambuss.png" class="journeytimeline">
+    </p>
+
+<div class="supermes2">
+    <p align="center">
+        <a href="createalert" class="btn btn-default custom"><i class="glyphicon glyphicon-alert"></i> Create alert</a>
+    </p>
+    <p align="center">
+        <a href="traffic" class="btn btn-default custom"><i class="glyphicon glyphicon-map-marker"></i> Redirect traffic</a>
+    </p>
+</div>
+
+<br>
+<br>
+
+</body>
+</html>

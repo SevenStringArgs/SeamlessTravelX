@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Third party services</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style>
+.custom {
+	width: 140px !important;
+}
+
+.supermes {
+	margin-left: 10%;
+	margin-right: 10%;
+	width: auto
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#"> </a>
+		</div>
+		<br>
+		<p align="center">
+            <a href="/" class="btn btn-default custom"><i class="glyphicon glyphicon-home"></i> Home</a>
+		</p>
+	</div>
+	<div class="container">
+		<h1 class="text-center">
+			<img src="washingmachine.jpg" class="img-rounded" alt="washingmachine" width="80" height="80">Kemtvätt AB
+		</h1>
+	</div>
+</nav>
+
+<div class="container">
+	<h3 class="text-center">Lämna din tvätt på hållplatsen!</h3>
+	<p class="text-center">Kemtvätt AB erbjuder dig som resenär hos Skånetrafiken att lämna och hämta din tvätt på
+			utvalda busshållsplatser. <br>Fyll enkelt i när du vill lämna av din tvätt och även när du vill hämta upp den, så fixar
+			vi resten.
+    </p>
+</div>
+<br>
+
+<div class="supermes">
+	<table class="table table-bordered">
+		<thead>
+            <tr>
+            <tr class="info">
+				<th>-</th>
+				<th>Typ av tvätt</th>
+				<th>Vikt (kg)</th>
+				<th>Pris (SEK)</th>
+			</tr>
+		</thead>
+		<tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+				    <td>Matta</td>
+					<td>2,0</td>
+					<td>350,00</td>
+
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>Kostym</td>
+				<td>0,5</td>
+				<td>200,00</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>Balklänning</td>
+				<td>1,0</td>
+				<td>200,00</td>
+		</tbody>
+	</table>
+</div>
+
+<div class="form-group">
+	<div class="supermes">
+		<label for="commentsfromcustomer">Comments</label>
+		<textarea class="form-control" rows="3"></textarea>
+	</div>
+</div>
+
+<div class="supermes">
+	<form class="form-horizontal center">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Lämna:</label>
+				<div class="col-sm-10">
+					<select class="form-control">
+						<option>Malmö C</option>
+						<option>Turning Torso</option>
+						<option>Västra Hamnen</option>
+						<option>Folkets park</option>
+					</select>
+				</div>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail2" class="col-sm-2 control-label">Hämta:</label>
+				<div class="col-sm-10">
+					<select class="form-control">
+						<option>Malmö C</option>
+						<option>Turning Torso</option>
+						<option>Västra Hamnen</option>
+						<option>Folkets park</option>
+					</select>
+				</div>
+		</div>
+	</form>
+</div>
+
+	<br>
+
+<div class="supermes">
+	<form class="form-horizontal center">
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Namn: </label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="inputEmail3" placeholder="">
+				</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">Efternamn:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPassword3" placeholder="">
+				</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">Telefon:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPassword3" placeholder="">
+				</div>
+		</div>
+	</form>
+</div>
+	<br>
+<div class="container">
+	<p class="text-center">
+		<label for="exampleInputEmail1">Summa att betala: 500 kr</label>
+	</p>
+</div>
+	<br>
+<p align="center">
+	<a href="/" class="btn btn-default custom"><i class="glyphicon glyphicon-plus"></i> Submit</a>
+</p>
+</body>
+</html>

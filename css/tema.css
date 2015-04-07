@@ -1,0 +1,13 @@
+.centerDropdown {
+    left: auto !important;
+    right: -25% !important;
+}
+.centerDropdown:after {
+    left: auto !important;
+    right: 45% !important;
+}
+
+.centered-table {
+    margin-left: auto;
+    margin-right: auto;
+}

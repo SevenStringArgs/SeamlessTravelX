@@ -1,0 +1,122 @@
+    <html>
+    <head>
+        <title>IoT map demo</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <script src="../js/iotguidemo.js"></script>
+
+        <!-- NOKIA HERE MAPS -->
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="http://js.api.here.com/v3/3.0/mapsjs-ui.css" />
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- BOOTSTRAP NAVBAR -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Buses Live</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="navbar-form navbar-left" role="search">
+                            <a href="/" class="btn btn-default custom"><i class="glyphicon glyphicon-home"></i> Home</a>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Bus #" id="busnumber">
+                        </div>           
+                        <button class="btn btn-default" onclick="findABus();">Search</button>
+                         <button class="btn btn-default" onclick="displayFilteredBusStopsOnMap();">Services</button>
+                          <button class="btn btn-default" onclick="resetDemo();">Demo</button>
+                         <label id="minutes"></label>
+                        
+                          <button id="deals" style="display:none" type="button" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Wait time at Malmo Kockums: 5 min. 7/11 offers you coffee for only 10 kr while you wait.">
+               <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> <strong>1</strong></button> 
+                    </div>
+                   <script>
+       $(function () {
+           $('[data-toggle="tooltip"]').tooltip()
+       })
+        </script>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <!-- NOKIA HERE MAP DIV -->
+        <div class="well" id="mapContainer"></div>
+        <script>
+            // Initialize the platform object:
+            var platform = new H.service.Platform({
+                'app_id': 'uC2PydFnCh7OcJnzAe0v',
+                'app_code': 'fAa9dOJLtNXOf41kU2wYHQ'
+            });
+
+            // Obtain the default map types from the platform object
+            var maptypes = platform.createDefaultLayers();
+
+            // Instantiate (and display) a map object:
+            var map = new H.Map(
+              document.getElementById('mapContainer'),
+              maptypes.normal.transit,
+              {
+                  zoom: 16,
+                  center: { lng: 12.975197, lat: 55.616691 }
+                //  center: { lng: 13.18801, lat: 55.70585 }
+              });
+
+            // Create the default UI:
+            var ui = H.ui.UI.createDefault(map, maptypes);
+            
+            // Enable the event system on the map instance:
+            var mapEvents = new H.mapevents.MapEvents(map);
+
+            // Add event listeners:
+            map.addEventListener('tap', function (evt) {
+                // Log 'tap' and 'mouse' events:
+                console.log(evt.type, evt.currentPointer.type);
+            });
+
+            // Instantiate the default behavior, providing the mapEvents object:
+            var behavior = new H.mapevents.Behavior(mapEvents);
+
+            window.addEventListener('resize', function () { map.getViewPort().resize(); });
+
+            // Create a marker icon from an image URL:
+           var icon = new H.map.Icon('http://maps.google.com/mapfiles/kml/paddle/4.png');
+           var busstop = new H.map.Icon('/images/skyltliten.png');
+           
+            var busicon = new H.map.Icon('/images/litenbussikon.png');
+                   var icon = new H.map.Icon('http://maps.google.com/mapfiles/kml/paddle/4.png');
+           var busstopRed = new H.map.Icon('/images/skyltliten.png');
+           var busstopGreen = new H.map.Icon('/images/gronskylt_360.png');
+           
+            var busiconRed = new H.map.Icon('/images/rodbuss_360.png');
+            var busiconGreen = new H.map.Icon('/images/gronbuss_360.png');
+            
+            var busiconRedEmpty = new H.map.Icon('/images/rodbuss1plutt.png');
+            var busiconRedNormal = new H.map.Icon('/images/rodbuss2pluttar.png');
+            var busiconRedFull = new H.map.Icon('/images/rodbuss3pluttar.png');
+            // Create a marker using the previously instantiated icon:
+            // var marker = new H.map.Marker({ lat: 52.5, lng: 13.4 }, { icon: icon });
+
+            // Add the marker to the map:
+            // map.addObject(marker);
+        </script>
+    </body>
+    </html>

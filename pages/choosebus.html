@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <style>
+        .custom {
+            width: 130px !important;
+        }
+    </style>
+
+    <style> .supermes{
+        margin-left:auto; margin-right:auto; width:40%
+    }
+    </style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+
+            </a>
+        </div>
+        <br>
+        <p align="center">
+            <a href="/" class="btn btn-default custom"><i class="glyphicon glyphicon-home"></i> Home</a>
+        </p>
+        <h1><p class="text-center">Choose your favourite buses!</p></h1>
+    </div>
+</nav>
+
+<div class="container">
+    <h3><p class="text-center">Mark buses as your favourites and get its alerts</p></h3>
+        <p class="text-center">
+        By mark a bus as your favourite will make it send you notifications <br>
+        about accidents or anything else that can cause delays.
+        </p>
+</div>
+
+<br>
+
+    <div class="container">
+        <div class="supermes">
+             <p align="center">Search for bus:</p>
+                <input type="text" class="form-control" placeholder="Bus no" aria-describedby="basic-addon1"> <br>
+                    <p align="center"><a href="/" class="btn btn-default custom"><i class="glyphicon glyphicon-search"></i> Search</a></p>
+        </div>
+    </div>
+
+<br>
+
+<div class="supermes">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+        <tr class="info">
+            <th> - </th>
+            <th>Bus no:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>4 Lund</td>
+
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>4 Malmö</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>100 Staffanstorp</td>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>...</td>
+        </tr>
+        </tbody></table>
+</div>
+
+<p align="center">
+    <a href="showalertfavbus" class="btn btn-default custom"> Submit</a>
+</p>
+
+</body>
+</html>
