@@ -41,6 +41,8 @@ function BusStopHelper(){
 	}
 
 	var evalCord = function(rect){
+		console.log('Right: ' + rect.getRight());
+		console.log('Left: ' + rect.getLeft());
 		mapDistance = rect.getRight() - rect.getLeft(); 
 		return searchDistance >= mapDistance;
 	}
