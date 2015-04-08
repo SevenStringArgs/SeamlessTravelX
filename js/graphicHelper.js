@@ -17,6 +17,6 @@ function GraphicHelper(){
 		setActiveNavbar: function(navbarId){
 			$('.active').removeClass('active');
 			$('#' + navbarId).addClass('active');
-		},
+		}
 	}
 }

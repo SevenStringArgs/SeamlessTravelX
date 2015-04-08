@@ -6,11 +6,6 @@ function registerMapEvents(map){
 }
 
 
-
-
-
-
-
 $(document).ready(function(){
 	console.log('Ready');
 	var gh = new GraphicHelper()
