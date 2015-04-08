@@ -61,6 +61,7 @@ func main(){
 	http.HandleFunc("/js/", staticFileHandler)
 	http.HandleFunc("/css/", staticFileHandler)
 	http.HandleFunc("/images/", staticFileHandler)
+	http.HandleFunc("/includes/", staticFileHandler)
 
 
 	var port string
