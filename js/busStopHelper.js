@@ -1,16 +1,30 @@
 function BusStopHelper(){
-	var nsBusCache = 'busCache';
+	var nsBusStopCache = 'busStopCache';
 	var storage = $.localStorage;
-	storage.isEmpty(nsBusCache) && storage.set(nsBusCache, {});
+	var addBusStopListeners = [];
+	storage.isEmpty(nsBusStopCache) && storage.set(nsBusStopCache, {count: 0});
 
 	var searchDistance = 0.05;
 
-	var addBus = function(bus){
-		console.log('Add bus');
-	}
+	var busStopAdded = function(busStop){
+		$.each(addBusStopListeners, function(key, busStopListener){
+			busStopListener(busStop);
+		});
+	};
 
-	var getBusesForRect = function(rect, done){
-		getBuses(rect.lat, rect.lng, function(err, data){
+	var addBusStop = function(busStop){
+		var busStops = storage.get(nsBusStopCache);
+		if(!busStops[busStop.id]){
+			busStops[busStop.id] = busStop;
+			busStops.count++;
+			storage.set(nsBusStopCache, busStops);
+			console.log('Add busStop');
+		}
+		console.log('Has busStop');
+	};
+
+	var getBusStopsForRect = function(rect, done){
+		getBusStops(rect.lat, rect.lng, function(err, data){
 			if(err){
 				console.log('Error getting busstops');
 				console.log(err);
@@ -21,10 +35,10 @@ function BusStopHelper(){
 				done(null, data);
 			}
 		});
-	}
+	};
 
-	var getBuses = function(lat, lng, done){
-		console.log('Getting buses');
+	var getBusStops = function(lat, lng, done){
+		console.log('Getting busStops');
 
 		$.ajax({
 			url: 'http://stx-api.mybluemix.net/api/showStops',
@@ -40,14 +54,14 @@ function BusStopHelper(){
 				done(error, null)
 			}
 		});
-	}
+	};
 
 	var evalCord = function(rect){
 		console.log('Right: ' + rect.getRight());
 		console.log('Left: ' + rect.getLeft());
 		mapDistance = rect.getRight() - rect.getLeft(); 
 		return searchDistance >= mapDistance;
-	}
+	};
 
 
 	return {
@@ -58,13 +72,17 @@ function BusStopHelper(){
 				return;
 			}
 
-			getBusesForRect(map.getCenter(), function(err, data){
+			getBusStopsForRect(map.getCenter(), function(err, data){
 				if(!err){
-					$.each(data, function(key, value){
-						addBus(value);
+					$.each(data.busStops, function(key, value){
+						addBusStop(value);
 					});
+					console.log(storage.get(nsBusStopCache));
 				}
 			});
+		},
+		subscribeBusStopAdded: function(addFn){
+			addBusStopListeners.push(addFn);
 		}
 	}
 }

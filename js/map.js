@@ -4,7 +4,7 @@ function NewMap(){
 			function getLocation() {
 		    //get the geolocation of the device
 
-}
+			}
 
 			returnMap.platform = new H.service.Platform({
 				'app_id': 'uC2PydFnCh7OcJnzAe0v',
@@ -52,12 +52,18 @@ function NewMap(){
            if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(function(pos){
 		        	returnMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
+		        	returnMap.map.addObject(new H.map.Marker({lng: pos.coords.longitude, lat: pos.coords.latitude}, {icon: returnMap.busstop}));
+
 		        });
 		    } else {
 		        alert("Geolocation is not supported by this browser.");
 		    }
            // Add the marker to the map:
            // map.addObject(marker);
+
+           returnMap.drawBusStop = function(busStop){
+
+           }
 
            return returnMap;
        }
