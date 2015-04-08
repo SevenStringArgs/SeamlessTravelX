@@ -1,10 +1,12 @@
 function BusStopHelper(){
-	window.busStops = window.busStops || {};
+	var nsBusCache = 'busCache';
+	var storage = $.localStorage;
+	storage.isEmpty(nsBusCache) && storage.set(nsBusCache, {});
+
 	var searchDistance = 0.05;
 
 	var addBus = function(bus){
-		if(window.busStops && !window.busStops[busStop.id])
-				window.busStops[bus]
+		console.log('Add bus');
 	}
 
 	var getBusesForRect = function(rect, done){

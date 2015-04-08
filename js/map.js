@@ -30,8 +30,6 @@ function NewMap(){
            // Instantiate the default behavior, providing the mapEvents object:
            returnMap.behavior = new H.mapevents.Behavior(returnMap.mapEvents);
 
-           window.addEventListener('resize', function () { map.getViewPort().resize(); });
-
            // Create a marker icon from an image URL:
            returnMap['icon'] = new H.map.Icon('http://maps.google.com/mapfiles/kml/paddle/4.png');
            returnMap['busstop'] = new H.map.Icon('/images/skyltliten.png');
