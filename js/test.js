@@ -5,8 +5,12 @@ function registerMapEvents(map){
          // Log 'tap' and 'mouse' events:
      });
 
-	map.map.addEventListener('dragend', function(evt, a, b, c){
-		bsHelper.add(evt.target.getViewBounds());
+	map.map.addEventListener('dragend', function(evt){
+		bsHelper.add(evt.target);
+	});
+
+	map.map.addEventListener('mapviewchangeend', function(evt){
+		bsHelper.add(evt.target);
 	});
 }
 
