@@ -15,7 +15,8 @@ function registerMapEvents(map){
     	console.log('Clicked at ' + Math.abs(coord.lat.toFixed(7)) + ' ' + Math.abs(coord.lng.toFixed(7)));
   });
 }
-         
+       
+  
 
 $(document).ready(function(){
 	console.log('Ready');
@@ -23,6 +24,22 @@ $(document).ready(function(){
 	var map = new NewMap();
 	bsHelper = new BusStopHelper();
 	bookmarker = new Bookmarker();
+
+	var drawCachedBusStops = function(busStops){
+		for(key in busStops){
+			drawNewBusStop(busStops[key]);
+		}
+	};
+
+	var drawNewBusStop = function(busStop){
+		map.drawBusStop(busStop);
+	};
+
+
+	bsHelper.subscribeBusStopAdded(drawNewBusStop);
+	drawCachedBusStops(bsHelper.getAll());
+	
+	
 
 
 

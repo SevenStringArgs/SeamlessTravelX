@@ -18,6 +18,7 @@ function BusStopHelper(){
 			busStops[busStop.id] = busStop;
 			busStops.count++;
 			storage.set(nsBusStopCache, busStops);
+			busStopAdded(busStop);
 			console.log('Add busStop');
 		}
 		console.log('Has busStop');
@@ -83,6 +84,16 @@ function BusStopHelper(){
 		},
 		subscribeBusStopAdded: function(addFn){
 			addBusStopListeners.push(addFn);
+		},
+		getAll: function(){
+			var busStops = {};
+			var cache = storage.get(nsBusStopCache);
+			for(key in cache){
+				if(!isNaN(key)){
+					busStops[key] = cache[key];
+				}
+			}
+			return busStops;
 		}
 	}
 }

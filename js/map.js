@@ -49,6 +49,9 @@ function NewMap(){
            // Create a marker using the previously instantiated icon:
            // var marker = new H.map.Marker({ lat: 52.5, lng: 13.4 }, { icon: icon });
 
+
+
+
            if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(function(pos){
 		        	returnMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
@@ -61,9 +64,11 @@ function NewMap(){
            // Add the marker to the map:
            // map.addObject(marker);
 
+      
            returnMap.drawBusStop = function(busStop){
-
+           		returnMap.map.addObject(new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: returnMap.busstop}))
            }
+
 
            return returnMap;
        }
