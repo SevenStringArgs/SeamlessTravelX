@@ -1,6 +1,11 @@
 function NewMap(){
 			var returnMap = {};
 
+			function getLocation() {
+		    //get the geolocation of the device
+
+}
+
 			returnMap.platform = new H.service.Platform({
 				'app_id': 'uC2PydFnCh7OcJnzAe0v',
 				'app_code': 'fAa9dOJLtNXOf41kU2wYHQ'
@@ -44,6 +49,13 @@ function NewMap(){
            // Create a marker using the previously instantiated icon:
            // var marker = new H.map.Marker({ lat: 52.5, lng: 13.4 }, { icon: icon });
 
+           if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(function(pos){
+		        	returnMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
+		        });
+		    } else {
+		        alert("Geolocation is not supported by this browser.");
+		    }
            // Add the marker to the map:
            // map.addObject(marker);
 
