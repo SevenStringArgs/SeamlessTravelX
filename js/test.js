@@ -25,6 +25,7 @@ $(document).ready(function(){
 		});
 
 		map.map.addEventListener('mapviewchangeend', function(evt){
+			console.log(evt.target)
 			BusStopStorage.add(evt.target);
 		});
 
