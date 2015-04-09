@@ -11,8 +11,12 @@ $(document).ready(function(){
 		}
 	};
 
+	var removeBusStop = function(busStop){
+		map.removeBusStop(busStop);
+	}
+
 	var drawNewBusStop = function(busStop){
-		map.drawBusStop(busStop);
+		map.addBusStop(busStop);
 	};
 
 	var registerMapEvents = function(map){
@@ -29,10 +33,15 @@ $(document).ready(function(){
 			var coord = map.map.screenToGeo(evt.currentPointer.viewportX, evt.currentPointer.viewportY);
 			console.log('Clicked at ' + Math.abs(coord.lat.toFixed(7)) + ' ' + Math.abs(coord.lng.toFixed(7)));
 		});
-	}
+	};
+
+	$('#clearLocalStorage').on('click' ,function(){
+		bsHelper.clearStorage();
+	});
 
 	bsHelper.subscribeBusStopAdded(drawNewBusStop);
+	bsHelper.subscribeBusStopRemoved(removeBusStop);
 	drawCachedBusStops(bsHelper.getAll());
-	
 	registerMapEvents(map);
+	BusStopHelper.countUp();
 });

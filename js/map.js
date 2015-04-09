@@ -64,11 +64,21 @@ function NewMap(){
            // Add the marker to the map:
            // map.addObject(marker);
 
-      
-           returnMap.drawBusStop = function(busStop){
-           		returnMap.map.addObject(new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: returnMap.busstop}))
-           }
 
+           returnMap.addBusStop = function(busStop){
+              var marker = new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: returnMap.busstop});
+              marker.stopId = busStop.id;
+           		returnMap.map.addObject(marker);
+           };
+
+           returnMap.removeBusStop = function(busStop){
+           		returnMap.map.getObjects().forEach(function (obj) {
+                if (obj.stopId === busStop.id)
+                  returnMap.map.removeObject(obj);
+              });
+           };
+
+           BusStopHelper.countUp();
 
            return returnMap;
        }

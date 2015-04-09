@@ -47,7 +47,7 @@ function updateBusStops() {
 function removeAllObjects() {
     //removes all objects on map
     map.getObjects().forEach(function (obj) {
-        map.removeObject(obj);
+        map.removeObjects(obj);
     });
 }
 
