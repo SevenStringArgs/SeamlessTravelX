@@ -39,6 +39,15 @@ $(document).ready(function(){
 		BusStopStorage.clearStorage();
 	});
 
+	$('.toggle-endPoint').on('click', function(){
+		TravelX.toggleLocal();
+		$('.toggle-endPoint').toggleClass('notCurrent');
+	});
+
+	if(!TravelX.getConfig().local && $('#global').hasClass('notCurrent')){
+		$('.toggle-endPoint').toggleClass('notCurrent');
+	}
+
 	BusStopStorage.subscribeBusStopAdded(drawNewBusStop);
 	BusStopStorage.subscribeBusStopRemoved(removeBusStop);
 	drawCachedBusStops(BusStopStorage.getAll());

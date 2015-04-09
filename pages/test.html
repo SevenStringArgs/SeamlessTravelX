@@ -26,7 +26,15 @@
 <div class="container">
 	<div class="well" id="mapContainer" style="height: 700px; margin-top: 30px;"></div>
 	<button id="clearLocalStorage">Clear Bus Stops</button>
+	<div class="row">
+		<div class="col-md-11"></div>
+		<div class="col-md-1">
+			<span id='local' class="glyphicon glyphicon-home toggle-endPoint" style="cursor: pointer;"></span>
+			<span id='global' class="glyphicon glyphicon-globe toggle-endPoint notCurrent" style="cursor: pointer;"></span>
+		</div>
+	</div>
 </div>
+
 	
 
 	<!-- *** Third Party JS *** -->
@@ -53,7 +61,7 @@
 	<script type="text/javascript" src="../js/map.js"></script>
 	<script type="text/javascript" src="../js/graphicHelper.js"></script>
 	<script type="text/javascript" src="../js/bookmarker.js"></script>	
-	
+	<script type="text/javascript" src="../js/travelx.js"></script>
 	<script type="text/javascript" src="../js/test.js"></script>
 
        <!-- /*** JS ***\ -->

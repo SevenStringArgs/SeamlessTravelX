@@ -1,3 +1,7 @@
 .cardImg {
 	margin: 0 auto;
 }
+
+.notCurrent {
+	display: none;
+}
