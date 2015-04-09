@@ -44,9 +44,17 @@ $(document).ready(function(){
 		$('.toggle-endPoint').toggleClass('notCurrent');
 	});
 
+	$( '#port-nr').on('change', function() {
+  		var newConf = TravelX.getConfig();
+  		newConf.port = $(this).val();
+  		TravelX.setConfig(newConf);
+	});
+
 	if(!TravelX.getConfig().local && $('#global').hasClass('notCurrent')){
 		$('.toggle-endPoint').toggleClass('notCurrent');
 	}
+
+	$('#port-nr').val(TravelX.getConfig().port);
 
 	BusStopStorage.subscribeBusStopAdded(drawNewBusStop);
 	BusStopStorage.subscribeBusStopRemoved(removeBusStop);
