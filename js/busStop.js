@@ -134,11 +134,14 @@ var BusStopStorage = (function(){
 })();
 
 
-var BusStopHelper = function(){
-	var searchDistance = 0.05;
+var BusStopHelper = function(target){
+	this.config = {
+		target: target,
+		searchDistance: 0.05
+	};
 
 	return {
-		add: function(Hmap){
+		addAtCoordinate: function(Hmap){
 			var valid = evalCord(map.getViewBounds());
 
 
