@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 	var removeBusStop = function(busStop){
 		map.removeBusStop(busStop);
-	}
+	};
 
 	var drawNewBusStop = function(busStop){
 		map.addBusStop(busStop);
