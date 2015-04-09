@@ -76,6 +76,7 @@ var BusStopStorage = (function(){
 		console.log('Right: ' + rect.getRight());
 		console.log('Left: ' + rect.getLeft());
 		mapDistance = rect.getRight() - rect.getLeft(); 
+		console.log(mapDistance);
 		return searchDistance >= mapDistance;
 	};
 
