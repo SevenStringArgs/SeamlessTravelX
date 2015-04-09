@@ -1,4 +1,4 @@
-function GraphicHelper(){
+var GraphicHelper = (function(){
 	var stdSlick = {
 		accessibility: true,
 		daptiveHeight: true,
@@ -19,4 +19,4 @@ function GraphicHelper(){
 			$('#' + navbarId).addClass('active');
 		}
 	}
-}
+})();

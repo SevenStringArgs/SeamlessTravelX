@@ -78,7 +78,6 @@ function NewMap(){
               });
            };
 
-           BusStopHelper.countUp();
 
            return returnMap;
        }

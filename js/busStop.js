@@ -1,10 +1,17 @@
-function BusStopHelper(){
+var BusStopStorage = (function(){
+	var store = $.localStorage;
 	var nsBusStopCache = 'busStopCache';
-	var storage = $.localStorage;
+	var eventPub = {};
+
+
+	var listeners = {};
+	
 	var addBusStopListeners = [];
 	var removeBustStopListeners = [];
-	storage.isEmpty(nsBusStopCache) && storage.set(nsBusStopCache, {count: 0});
+	store.isEmpty(nsBusStopCache) && store.set(nsBusStopCache, {count: 0});
 	var searchDistance = 0.05;
+
+
 
 	var removedBusStop = function(busStop){
 		$.each(removeBustStopListeners, function(key, listener){
@@ -19,13 +26,13 @@ function BusStopHelper(){
 	};
 
 	var addBusStop = function(busStop){
-		var busStops = storage.get(nsBusStopCache);
+		var busStops = store.get(nsBusStopCache);
 		if(!busStops[busStop.id]){
 			busStop['marker'] = new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: new H.map.Icon('/images/skyltliten.png')});
 			busStop['marker'].stopId = busStop.id;
 			busStops[busStop.id] = busStop;
 			busStops.count++;
-			storage.set(nsBusStopCache, busStops);
+			store.set(nsBusStopCache, busStops);
 			busStopAdded(busStop);
 			console.log('Add busStop');
 		}
@@ -86,9 +93,15 @@ function BusStopHelper(){
 					$.each(data.busStops, function(key, value){
 						addBusStop(value);
 					});
-					console.log(storage.get(nsBusStopCache));
+					console.log(store.get(nsBusStopCache));
 				}
 			});
+		},
+		addListener: function(e, func){
+			listeners[e] && listeners[e].push(func);
+		},
+		addListener: function(e, func){
+
 		},
 		subscribeBusStopAdded: function(addFn){
 			addBusStopListeners.push(addFn);
@@ -98,7 +111,7 @@ function BusStopHelper(){
 		},
 		getAll: function(){
 			var busStops = {};
-			var cache = storage.get(nsBusStopCache);
+			var cache = store.get(nsBusStopCache);
 			for(key in cache){
 				if(!isNaN(key)){
 					busStops[key] = cache[key];
@@ -107,7 +120,7 @@ function BusStopHelper(){
 			return busStops;
 		},
 		clearStorage: function(){
-			var cache = storage.get(nsBusStopCache);
+			var cache = store.get(nsBusStopCache);
 			for(key in cache){
 				if(!isNaN(key)){
 					removedBusStop(cache[key]);
@@ -115,16 +128,32 @@ function BusStopHelper(){
 				}
 			}
 			cache.count = 0;
-			storage.set(nsBusStopCache, cache);
+			store.set(nsBusStopCache, cache);
+		}
+	}
+})();
+
+
+var BusStopHelper = function(){
+	var searchDistance = 0.05;
+
+	return {
+		add: function(Hmap){
+			var valid = evalCord(map.getViewBounds());
+
+
+			if(!valid){
+				return;
+			}
+
+			getBusStopsForRect(map.getCenter(), function(err, data){
+				if(!err){
+					$.each(data.busStops, function(key, value){
+						addBusStop(value);
+					});
+					console.log(store.get(nsBusStopCache));
+				}
+			});
 		}
 	}
 }
-
-BusStopHelper.counter = BusStopHelper.counter || 0;
-
-BusStopHelper.countUp = function(){
-		console.log("Counting: " + BusStopHelper.counter);
-		BusStopHelper.counter++;
-};
-
-

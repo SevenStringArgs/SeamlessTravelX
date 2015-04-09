@@ -1,8 +1,7 @@
 $(document).ready(function(){
 	console.log('Ready');
-	var gh = new GraphicHelper()
 	var map = new NewMap();
-	var bsHelper = new BusStopHelper();
+	
 	var bookmarker = new Bookmarker();
 
 	var drawCachedBusStops = function(busStops){
@@ -26,7 +25,7 @@ $(document).ready(function(){
 		});
 
 		map.map.addEventListener('mapviewchangeend', function(evt){
-			bsHelper.add(evt.target);
+			BusStopStorage.add(evt.target);
 		});
 
 		map.map.addEventListener('longpress', function(evt){
@@ -36,12 +35,12 @@ $(document).ready(function(){
 	};
 
 	$('#clearLocalStorage').on('click' ,function(){
-		bsHelper.clearStorage();
+		BusStopStorage.clearStorage();
 	});
 
-	bsHelper.subscribeBusStopAdded(drawNewBusStop);
-	bsHelper.subscribeBusStopRemoved(removeBusStop);
-	drawCachedBusStops(bsHelper.getAll());
+	BusStopStorage.subscribeBusStopAdded(drawNewBusStop);
+	BusStopStorage.subscribeBusStopRemoved(removeBusStop);
+	drawCachedBusStops(BusStopStorage.getAll());
 	registerMapEvents(map);
-	BusStopHelper.countUp();
+
 });
