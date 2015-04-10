@@ -134,7 +134,7 @@ var BusStopHelper = (function(target){
 	var newConfig = function(){
 		return {
 			target: target,
-			searchDistance: 0.07
+			searchDistance: 0.1
 		};
 	};
 
