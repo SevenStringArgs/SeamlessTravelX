@@ -1,6 +1,10 @@
 $(document).ready(function(){
 	console.log('Ready');
 	var map = new Map();
+<<<<<<< HEAD
+=======
+	var drawOnMap = { start: undefined, end: undefined };
+>>>>>>> a83acb778db927eab59406b7c7e66aa1d7c9237f
 	
 	var bookmarker = new Bookmarker();
 
@@ -36,8 +40,16 @@ $(document).ready(function(){
 		});
 
 		map.map.addEventListener('longpress', function(evt){
-			var coord = map.map.screenToGeo(evt.currentPointer.viewportX, evt.currentPointer.viewportY);
-			console.log('Clicked at ' + Math.abs(coord.lat.toFixed(7)) + ' ' + Math.abs(coord.lng.toFixed(7)));
+			if(drawOnMap.start && drawOnMap.end){
+				drawOnMap.start = drawOnMap.end = undefined;
+			} else if(drawOnMap.start){
+				// drawOnMap.end =
+				drawOnMap.draw(); 
+			} else {
+				// drawOnMap.start = 
+			}
+			console.log(drawOnMap);
+			console.log(evt.originalEvent);
 		});
 	};
 
@@ -50,12 +62,23 @@ $(document).ready(function(){
 		$('.toggle-endPoint').toggleClass('notCurrent');
 	});
 
+<<<<<<< HEAD
 	$( '#port-nr').on('change', function() {
+=======
+	$('#port-nr').on('change', function() {
+>>>>>>> a83acb778db927eab59406b7c7e66aa1d7c9237f
   		var newConf = TravelX.getConfig();
   		newConf.port = $(this).val();
   		TravelX.setConfig(newConf);
 	});
 
+<<<<<<< HEAD
+=======
+	$('#testApi').on('click', function(){
+		BusQuery.getRoute();
+	});
+
+>>>>>>> a83acb778db927eab59406b7c7e66aa1d7c9237f
 	if(!TravelX.getConfig().local && $('#global').hasClass('notCurrent')){
 		$('.toggle-endPoint').toggleClass('notCurrent');
 	}
@@ -68,6 +91,7 @@ $(document).ready(function(){
 	registerMapEvents(map);
 
 
+<<<<<<< HEAD
 	var ws = new WebSocket('ws://stx-api-dev.mybluemix.net/mvdsubscriber/busService');
 
 	ws.onopen = function()
@@ -88,6 +112,28 @@ $(document).ready(function(){
         // websocket is closed.
         console.log("Connection is closed..."); 
      };
+=======
+	// var ws = new WebSocket('ws://stx-api-dev.mybluemix.net/mvdsubscriber/busService');
+
+	// ws.onopen = function()
+ //     {
+ //        // Web Socket is connected, send data using send()
+ //        // ws.send("Message to send");
+ //        console.log("Message is sent...");
+ //     };
+
+ //     ws.onmessage = function (evt) 
+ //     { 
+ //        var received_msg = evt.data;
+ //        console.log("Message is received...");
+ //     };
+
+ //     ws.onclose = function()
+ //     { 
+ //        // websocket is closed.
+ //        console.log("Connection is closed..."); 
+ //     };
+>>>>>>> a83acb778db927eab59406b7c7e66aa1d7c9237f
 
 
 
