@@ -17,6 +17,12 @@ var GraphicHelper = (function(){
 		setActiveNavbar: function(navbarId){
 			$('.active').removeClass('active');
 			$('#' + navbarId).addClass('active');
+		},
+		printMapPoint: function(point){
+			console.log('Lng: ' + point.lng + 'Lat: ' + point.lat);
+		},
+		printRect: function(rect){
+			console.log();
 		}
 	}
 })();
