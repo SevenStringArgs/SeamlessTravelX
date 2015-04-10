@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	console.log('Ready');
-	var map = new NewMap();
+	var map = new Map();
 	
 	var bookmarker = new Bookmarker();
 
@@ -20,8 +20,8 @@ $(document).ready(function(){
 
 	var registerMapEvents = function(map){
 		map.map.addEventListener('tap', function (evt) {
-			var coord = map.map.screenToGeo(evt.currentPointer.viewportX, evt.currentPointer.viewportY);
-			console.log('Clicked at ' + Math.abs(coord.lat.toFixed(7)) + ' ' + Math.abs(coord.lng.toFixed(7)));
+			var rect = map.map.getViewBounds();
+			
 		});
 
 		map.map.addEventListener('mapviewchangeend', function(evt){
@@ -60,5 +60,32 @@ $(document).ready(function(){
 	BusStopStorage.subscribeBusStopRemoved(removeBusStop);
 	drawCachedBusStops(BusStopStorage.getAll());
 	registerMapEvents(map);
+
+
+	var ws = new WebSocket();
+
+	ws.onopen = function()
+     {
+        // Web Socket is connected, send data using send()
+        ws.send("Message to send");
+        console.log("Message is sent...");
+     };
+
+     ws.onmessage = function (evt) 
+     { 
+        var received_msg = evt.data;
+        console.log("Message is received...");
+     };
+
+     ws.onclose = function()
+     { 
+        // websocket is closed.
+        console.log("Connection is closed..."); 
+     };
+
+
+
+
+
 
 });
