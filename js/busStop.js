@@ -39,15 +39,11 @@ var BusStopStorage = (function(){
 		console.log('Has busStop');
 	};
 
-	var getBusStopsForRect = function(rect, done){
-		getBusStops(rect.lat, rect.lng, function(err, data){
+	var getBusStopsForPoint = function(point, done){
+		getBusStops(point.lat, point.lng, function(err, data){
 			if(err){
-				console.log('Error getting busstops');
-				console.log(err);
 				done(err, null);
 			} else {
-				console.log('Data getting busstops');
-				console.log(data);
 				done(null, data);
 			}
 		});
@@ -82,19 +78,16 @@ var BusStopStorage = (function(){
 
 
 	return {
-		add: function(map){
-			var valid = evalCord(map.getViewBounds());
-
-			if(!valid){
-				return;
-			}
-
-			getBusStopsForRect(map.getCenter(), function(err, data){
-				if(!err){
+		add: function(point, done){
+			getBusStopsForPoint(point, function(err, data){
+				if(err){
+					done(err, null);
+				} else {
 					$.each(data.busStops, function(key, value){
 						addBusStop(value);
 					});
 					console.log(store.get(nsBusStopCache));
+					done(null, data);
 				}
 			});
 		},
@@ -135,29 +128,67 @@ var BusStopStorage = (function(){
 })();
 
 
-var BusStopHelper = function(target){
-	this.config = {
-		target: target,
-		searchDistance: 0.05
+var BusStopHelper = (function(target){
+	var nsBusStopHelper = 'busStopHelperCache';
+
+	var newConfig = function(){
+		return {
+			target: target,
+			searchDistance: 0.07
+		};
 	};
 
+	var config = newConfig();
+	SH.set(nsBusStopHelper, config);
+
+	var getBusStopsOnMap = function(hMap, done){
+		var rect = hMap.getViewBounds();
+		var topLeft = rect.getTopLeft();
+		var bottomRight = rect.getBottomRight();
+		BusStopStorage.add(rect.getCenter(), done);
+		for(var lng = Math.abs(topLeft.lng); lng < Math.abs(bottomRight.lng); lng += 0.02){
+			for(var lat = Math.abs(bottomRight.lat); lat < Math.abs(topLeft.lat); lat += 0.01){
+				var point = new H.geo.Point(lat, lng);
+				BusStopStorage.add(point, done);
+			}
+		}
+
+	};
+
+	var evalCord = function(rect){
+		console.log('Right: ' + rect.getRight());
+		console.log('Left: ' + rect.getLeft());
+		mapDistance = rect.getRight() - rect.getLeft(); 
+		console.log(mapDistance);
+		return config.searchDistance >= mapDistance;
+	};
+
+	
+
 	return {
-		addAtCoordinate: function(Hmap){
-			var valid = evalCord(map.getViewBounds());
-
-
-			if(!valid){
+		setConfig: function(newConf){
+			config = newConf;
+			SH.set(nsBusStopHelper, newConf);
+		},
+		getConfig: function(){
+			return config;
+		},
+		newConfig: function(){
+			return newConfig();
+		},
+		get: function(hMap, done){
+			if(!evalCord(hMap.getViewBounds())){
+				done('Bounds to wide', null);
 				return;
 			}
 
-			getBusStopsForRect(map.getCenter(), function(err, data){
-				if(!err){
-					$.each(data.busStops, function(key, value){
-						addBusStop(value);
-					});
-					console.log(store.get(nsBusStopCache));
+			getBusStopsOnMap(hMap, function(err, data){
+				if(err){
+					done(err, data);
+				} else {
+					done(err, data);
 				}
 			});
 		}
 	}
-}
+})();
