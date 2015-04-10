@@ -1,14 +1,8 @@
 $(document).ready(function(){
 	console.log('Ready');
 	var map = new Map();
-<<<<<<< HEAD
+
 	var drawOnMap = { start: undefined, end: undefined };
-=======
-<<<<<<< HEAD
-=======
-	var drawOnMap = { start: undefined, end: undefined };
->>>>>>> a83acb778db927eab59406b7c7e66aa1d7c9237f
->>>>>>> 50ec03c18bca34faf62aacd9d709b812ff0857a9
 	
 	var bookmarker = new Bookmarker();
 
@@ -88,33 +82,5 @@ $(document).ready(function(){
 	BusStopStorage.subscribeBusStopRemoved(removeBusStop);
 	drawCachedBusStops(BusStopStorage.getAll());
 	registerMapEvents(map);
-
-
-
-	// var ws = new WebSocket('ws://stx-api-dev.mybluemix.net/mvdsubscriber/busService');
-
-	// ws.onopen = function()
- //     {
- //        // Web Socket is connected, send data using send()
- //        // ws.send("Message to send");
- //        console.log("Message is sent...");
- //     };
-
- //     ws.onmessage = function (evt) 
- //     { 
- //        var received_msg = evt.data;
- //        console.log("Message is received...");
- //     };
-
- //     ws.onclose = function()
- //     { 
- //        // websocket is closed.
- //        console.log("Connection is closed..."); 
- //     };
-
-
-
-
-
 
 });
