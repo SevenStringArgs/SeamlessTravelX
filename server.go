@@ -33,7 +33,8 @@ func pageHandler(w http.ResponseWriter, r *http.Request){
 }
 
 func notFoundHandler(w http.ResponseWriter, r *http.Request){
-	log.Printf("%s not found.", r.URL.Path[1])
+	log.Printf("Not found: ")
+	log.Printf(r.URL.Path)
 	http.ServeFile(w, r, htmlRoot + "/404.html")
 }
 
