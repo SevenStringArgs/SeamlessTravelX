@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	console.log('Ready');
 	var map = new Map();
+	var drawOnMap = { start: undefined, end: undefined };
 	
 	var bookmarker = new Bookmarker();
 
@@ -36,8 +37,16 @@ $(document).ready(function(){
 		});
 
 		map.map.addEventListener('longpress', function(evt){
-			var coord = map.map.screenToGeo(evt.currentPointer.viewportX, evt.currentPointer.viewportY);
-			console.log('Clicked at ' + Math.abs(coord.lat.toFixed(7)) + ' ' + Math.abs(coord.lng.toFixed(7)));
+			if(drawOnMap.start && drawOnMap.end){
+				drawOnMap.start = drawOnMap.end = undefined;
+			} else if(drawOnMap.start){
+				// drawOnMap.end =
+				drawOnMap.draw(); 
+			} else {
+				// drawOnMap.start = 
+			}
+			console.log(drawOnMap);
+			console.log(evt.originalEvent);
 		});
 	};
 
@@ -50,10 +59,14 @@ $(document).ready(function(){
 		$('.toggle-endPoint').toggleClass('notCurrent');
 	});
 
-	$( '#port-nr').on('change', function() {
+	$('#port-nr').on('change', function() {
   		var newConf = TravelX.getConfig();
   		newConf.port = $(this).val();
   		TravelX.setConfig(newConf);
+	});
+
+	$('#testApi').on('click', function(){
+		BusQuery.getRoute();
 	});
 
 	if(!TravelX.getConfig().local && $('#global').hasClass('notCurrent')){
@@ -68,26 +81,26 @@ $(document).ready(function(){
 	registerMapEvents(map);
 
 
-	var ws = new WebSocket('ws://stx-api-dev.mybluemix.net/mvdsubscriber/busService');
+	// var ws = new WebSocket('ws://stx-api-dev.mybluemix.net/mvdsubscriber/busService');
 
-	ws.onopen = function()
-     {
-        // Web Socket is connected, send data using send()
-        // ws.send("Message to send");
-        console.log("Message is sent...");
-     };
+	// ws.onopen = function()
+ //     {
+ //        // Web Socket is connected, send data using send()
+ //        // ws.send("Message to send");
+ //        console.log("Message is sent...");
+ //     };
 
-     ws.onmessage = function (evt) 
-     { 
-        var received_msg = evt.data;
-        console.log("Message is received...");
-     };
+ //     ws.onmessage = function (evt) 
+ //     { 
+ //        var received_msg = evt.data;
+ //        console.log("Message is received...");
+ //     };
 
-     ws.onclose = function()
-     { 
-        // websocket is closed.
-        console.log("Connection is closed..."); 
-     };
+ //     ws.onclose = function()
+ //     { 
+ //        // websocket is closed.
+ //        console.log("Connection is closed..."); 
+ //     };
 
 
 
