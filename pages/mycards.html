@@ -21,11 +21,7 @@
 
     <title>Simple Sidebar - Start Bootstrap Template</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,6 +45,9 @@
                 </a>
             </li>
             <li>
+                <a href="index">Start</a>
+            </li>
+            <li>
                 <a href="#">My Cards</a>
             </li>
             <li>
@@ -65,43 +64,116 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
+
     <div id="page-content-wrapper">
+         
+        <div class="container-fluid nav-bar">
+           <div class="row">
+              <div class="col-xs-4 col-sm-4"><img src="#" id="menu-toggle" alt=""></div>
+              <div class="col-xs-4 col-sm-4 nav-bar-text"><span>My cards</span></div>
+              <div class="col-xs-4 col-sm-4"><img src="#" class="right" alt=""></div>
+            </div>
+        </div>
 
-    <div class="container-fluid navbarhej">
-    
-        <h3><p>Refill/Extend card</p></h3>
-    </div>
 
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                
+                <div class="card">
+                    <div class="card-items-wrapper">
+                        <div class="slider">
+                            <img src="#" alt="">
+                            <img src="#" class="right" alt="">
+                        </div>
+                            
+                           <div class="card-items">
+                                <span class="card-type-text">
+                                    Current balance:
+                                </span>
+                                
+                                <br>
 
-      <div class="container">
-		<br>
-		<p>Swipe through your refillable cards</p>
-		
-			<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><img src="../images/jojoBors.png" class="img-rounded" width="304" height="200"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-		
-		<p>Current balance: 250 kr</p>
-        <a href="refillcard" class="btn btn-default custom"><i class="glyphicon glyphicon-plus"></i> Top up</a>
-	</div>
+                                <span class="card-info">
+                                    225 kr
+                                </span>
+                               
+                                <div class="refill-button right" data-toggle="modal" data-target="#myModal">
+                                     Re-fill
+                                </div>
+                                
+                           </div>
+                    </div>
+                </div>
+
+              </div>
+              <div class="col-md-2"></div>
+              
+            </div>
+            
+            <div class="row">
+                <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="sucess-message">
+                    <span class="message-thick">Scanned!</span> Your card is now scanned in zone: <span class="message-thick">Lund</span>
+                 </div>
+              </div>
+              <div class="col-md-2"></div>
+                 
+             
+            </div>
+            
+    		<!--<br>
+    		<p>Swipe through your refillable cards</p>
+    		
+    			<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><img src="../images/jojoBors.png" class="img-rounded" width="304" height="200"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+    		
+    		<p>Current balance: 250 kr</p>
+            <a href="refillcard" class="btn btn-default custom"><i class="glyphicon glyphicon-plus"></i> Top up</a>-->
+    	</div>
     </div>
     <!-- /#page-content-wrapper -->
 
+
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Refill your card</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body-wrapper">
+            <label for="card-selection">Choose card:</label>
+            <br>
+            <select name="card-selection" id="" class="card-selection form-control">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+            </select>
+
+            <br>
+
+           <label for="amount-selection">Choose amount:</label>
+           <br>
+            <select name="amount-selection" id="" class="amount-selection form-control">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="left btn-accept">Re-fill card</button>
+            <button type="button" class="left btn-deny" data-dismiss="modal">Cancel</button>
+          </div>
+    </div>
+    </div>
+  </div>
+</div>
+
 </div>
 <!-- /#wrapper -->
-
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-
-<!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
-
 
 
 <script type="text/javascript" src="../includes/jquery/jquery-2.1.3.min.js"></script>
@@ -110,23 +182,12 @@
 <script type="text/javascript" src="../includes/storageApi/jquery.storageapi.min.js"></script>
 
 
-<!-- NOKIA HERE MAPS -->
-<script src="../includes/here/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
-<script src="../includes/here/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
-<script src="../includes/here/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
-<script src="../includes/here/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
 
 
 <!-- /*** Third Party JS ***\ -->
 
 <!-- *** JS *** -->
-<script type="text/javascript" src="../js/storageHandler.js"></script>
-<script type="text/javascript" src="../js/busStop.js"></script>
-<script type="text/javascript" src="../js/map.js"></script>
-<script type="text/javascript" src="../js/graphicHelper.js"></script>
-<script type="text/javascript" src="../js/bookmarker.js"></script>
-<script type="text/javascript" src="../js/travelx.js"></script>
-<script type="text/javascript" src="../js/test.js"></script>
+<script type="text/javascript" src="../js/toggle.js"></script>
 
 
 </body>
