@@ -1,10 +1,6 @@
 var SH = (function(){
 	var store = $.localStorage;
 	var eventPub = {};
-	// store.isEmpty(nsBusStopCache) && store.set(nsBusStopCache, {count: 0});
-	
-	var name = "It's name";
-
 
 	return {
 		get: function(ns){
