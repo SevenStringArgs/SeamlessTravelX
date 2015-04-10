@@ -57,7 +57,7 @@ var BusStopStorage = (function(){
 		console.log('Getting busStops');
 
 		$.ajax({
-			url: TravelX.url() + '/showStops',
+			url: TravelX.url('/showStops'),
 			type: 'GET',
 			headers: { Accept : "application/json; charset=utf-8"}, 
 			data: {'lat': lat, 'lng': lng},
