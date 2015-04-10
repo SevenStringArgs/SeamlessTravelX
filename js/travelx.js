@@ -21,9 +21,6 @@ var SH = (function(){
 	}
 })();
 
-
-
-
 var TravelX = (function(){
 	var nsConfig = 'endPointConfig';
 	var config = {
