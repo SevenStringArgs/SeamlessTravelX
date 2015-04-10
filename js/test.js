@@ -26,7 +26,13 @@ $(document).ready(function(){
 
 		map.map.addEventListener('mapviewchangeend', function(evt){
 			console.log(evt.target)
-			BusStopStorage.add(evt.target);
+			BusStopHelper.get(evt.target, function(err, data){
+				if(err){
+					console.log('error getting busstops');
+				} else {
+					console.log('Got buses');
+				}
+			});
 		});
 
 		map.map.addEventListener('longpress', function(evt){
@@ -62,26 +68,26 @@ $(document).ready(function(){
 	registerMapEvents(map);
 
 
-	var ws = new WebSocket();
+	// var ws = new WebSocket();
 
-	ws.onopen = function()
-     {
-        // Web Socket is connected, send data using send()
-        ws.send("Message to send");
-        console.log("Message is sent...");
-     };
+	// ws.onopen = function()
+ //     {
+ //        // Web Socket is connected, send data using send()
+ //        ws.send("Message to send");
+ //        console.log("Message is sent...");
+ //     };
 
-     ws.onmessage = function (evt) 
-     { 
-        var received_msg = evt.data;
-        console.log("Message is received...");
-     };
+ //     ws.onmessage = function (evt) 
+ //     { 
+ //        var received_msg = evt.data;
+ //        console.log("Message is received...");
+ //     };
 
-     ws.onclose = function()
-     { 
-        // websocket is closed.
-        console.log("Connection is closed..."); 
-     };
+ //     ws.onclose = function()
+ //     { 
+ //        // websocket is closed.
+ //        console.log("Connection is closed..."); 
+ //     };
 
 
 
