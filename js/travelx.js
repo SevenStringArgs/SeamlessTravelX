@@ -53,11 +53,8 @@ var TravelX = (function(){
 		getConfig: function(){
 			return config;
 		},
-		url: function(){
-			if(config.local){
-				return config.endPoints[0] + ':' + config.port + config.apiBase;
-			}
-			return config.endPoints[1] + config.apiBase;
+		url: function(apiMetod){
+			return (config.local ? config.endPoints[0] + ':' + config.port: config.endPoints[1]) + config.apiBase + (apiMetod ? apiMetod : '');
 		}
 	}
 })();
