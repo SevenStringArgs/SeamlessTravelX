@@ -1,61 +1,57 @@
-function NewMap(){
-			var returnMap = {};
+function Map(){
+			var hMap = {};
 
 			function getLocation() {
 		    //get the geolocation of the device
 
 			}
 
-			returnMap.platform = new H.service.Platform({
+			hMap.platform = new H.service.Platform({
 				'app_id': 'uC2PydFnCh7OcJnzAe0v',
 				'app_code': 'fAa9dOJLtNXOf41kU2wYHQ'
 			});
 
            // Obtain the default map types from the platform object
-           var maptypes = returnMap.platform.createDefaultLayers();
+           var maptypes = hMap.platform.createDefaultLayers();
 
            // Instantiate (and display) a map object:
-           returnMap.map = new H.Map(
+           hMap.map = new H.Map(
            	document.getElementById('mapContainer'),
            	maptypes.normal.transit,
            	{
-           		zoom: 16,
+           		zoom: 2,
            		center: { lng: 12.975197, lat: 55.616691 }
                //  center: { lng: 13.18801, lat: 55.70585 }
            });
 
            // Create the default UI:
-           returnMap.ui = H.ui.UI.createDefault(returnMap.map, maptypes);
+           hMap.ui = H.ui.UI.createDefault(hMap.map, maptypes);
            
            // Enable the event system on the map instance:
-           returnMap.mapEvents = new H.mapevents.MapEvents(returnMap.map);
-
-           // Add event listeners:
+           hMap.mapEvents = new H.mapevents.MapEvents(hMap.map);
 
            // Instantiate the default behavior, providing the mapEvents object:
-           returnMap.behavior = new H.mapevents.Behavior(returnMap.mapEvents);
+           hMap.behavior = new H.mapevents.Behavior(hMap.mapEvents);
 
            // Create a marker icon from an image URL:
-           returnMap['icon'] = new H.map.Icon('http://maps.google.com/mapfiles/kml/paddle/4.png');
-           returnMap['busstop'] = new H.map.Icon('/images/skyltliten.png');
-           returnMap['busicon'] = new H.map.Icon('/images/litenbussikon.png');
-           returnMap['busstopRed'] = new H.map.Icon('/images/skyltliten.png');
-           returnMap['busstopGreen'] = new H.map.Icon('/images/gronskylt_360.png');
-           returnMap['busiconRed'] = new H.map.Icon('/images/rodbuss_360.png');
-           returnMap['busiconGreen'] = new H.map.Icon('/images/gronbuss_360.png'); 
-           returnMap['busiconRedEmpty'] = new H.map.Icon('/images/rodbuss1plutt.png');
-           returnMap['busiconRedNormal'] = new H.map.Icon('/images/rodbuss2pluttar.png');
-           returnMap['busiconRedFull'] = new H.map.Icon('/images/rodbuss3pluttar.png');
+           hMap['icon'] = new H.map.Icon('http://maps.google.com/mapfiles/kml/paddle/4.png');
+           hMap['busstop'] = new H.map.Icon('/images/skyltliten.png');
+           hMap['busicon'] = new H.map.Icon('/images/litenbussikon.png');
+           hMap['busstopRed'] = new H.map.Icon('/images/skyltliten.png');
+           hMap['busstopGreen'] = new H.map.Icon('/images/gronskylt_360.png');
+           hMap['busiconRed'] = new H.map.Icon('/images/rodbuss_360.png');
+           hMap['busiconGreen'] = new H.map.Icon('/images/gronbuss_360.png'); 
+           hMap['busiconRedEmpty'] = new H.map.Icon('/images/rodbuss1plutt.png');
+           hMap['busiconRedNormal'] = new H.map.Icon('/images/rodbuss2pluttar.png');
+           hMap['busiconRedFull'] = new H.map.Icon('/images/rodbuss3pluttar.png');
            // Create a marker using the previously instantiated icon:
            // var marker = new H.map.Marker({ lat: 52.5, lng: 13.4 }, { icon: icon });
 
-
-
-
            if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(function(pos){
-		        	returnMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
-		        	returnMap.map.addObject(new H.map.Marker({lng: pos.coords.longitude, lat: pos.coords.latitude}, {icon: returnMap.busstop}));
+              hMap.map.setZoom(14, true);
+		        	hMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
+		        	hMap.map.addObject(new H.map.Marker({lng: pos.coords.longitude, lat: pos.coords.latitude}, {icon: hMap.busstop}));
 
 		        });
 		    } else {
@@ -65,19 +61,18 @@ function NewMap(){
            // map.addObject(marker);
 
 
-           returnMap.addBusStop = function(busStop){
-              var marker = new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: returnMap.busstop});
+           hMap.addBusStop = function(busStop){
+              var marker = new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: hMap.busstop});
               marker.stopId = busStop.id;
-           		returnMap.map.addObject(marker);
+           		hMap.map.addObject(marker);
            };
 
-           returnMap.removeBusStop = function(busStop){
-           		returnMap.map.getObjects().forEach(function (obj) {
+           hMap.removeBusStop = function(busStop){
+           		hMap.map.getObjects().forEach(function (obj) {
                 if (obj.stopId === busStop.id)
-                  returnMap.map.removeObject(obj);
+                  hMap.map.removeObject(obj);
               });
            };
-
-
-           return returnMap;
+           
+           return hMap;
        }
