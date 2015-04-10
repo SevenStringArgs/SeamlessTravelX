@@ -1,7 +1,14 @@
 $(document).ready(function(){
 	console.log('Ready');
 	var map = new Map();
+<<<<<<< HEAD
 	var drawOnMap = { start: undefined, end: undefined };
+=======
+<<<<<<< HEAD
+=======
+	var drawOnMap = { start: undefined, end: undefined };
+>>>>>>> a83acb778db927eab59406b7c7e66aa1d7c9237f
+>>>>>>> 50ec03c18bca34faf62aacd9d709b812ff0857a9
 	
 	var bookmarker = new Bookmarker();
 
@@ -59,7 +66,9 @@ $(document).ready(function(){
 		$('.toggle-endPoint').toggleClass('notCurrent');
 	});
 
+
 	$('#port-nr').on('change', function() {
+
   		var newConf = TravelX.getConfig();
   		newConf.port = $(this).val();
   		TravelX.setConfig(newConf);
@@ -79,6 +88,7 @@ $(document).ready(function(){
 	BusStopStorage.subscribeBusStopRemoved(removeBusStop);
 	drawCachedBusStops(BusStopStorage.getAll());
 	registerMapEvents(map);
+
 
 
 	// var ws = new WebSocket('ws://stx-api-dev.mybluemix.net/mvdsubscriber/busService');
