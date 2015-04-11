@@ -26,10 +26,14 @@ body {
 }
 
 .nav-bar {
+	background: #fff;
 	border-bottom: 2px solid #c9d7e4;
 	margin-left:-19px;
 	margin-right:-19px;
-	padding-bottom: 15px;
+	margin-top: -19px;
+	padding: 15px;
+	z-index: 999;
+	position: relative;
 }
 
 .nav-bar-text {
@@ -178,4 +182,26 @@ body {
 .nav-icon {
 	width: 30px;
 	height: 30px;
+}
+
+.map {
+	position: relative;
+	top: -60px;
+}
+
+.bus-search {
+	position: relative;
+	top: 25px;
+	z-index: 9999;
+}
+
+.bus-search-input {
+	border: 1px solid #c9d7e4;
+	-moz-box-shadow: 0 2px 0 rgba(35,31,32,.05);
+	-webkit-box-shadow: 0 2px 0 rgba(35,31,32,.05);
+	box-shadow: 0 2px 0 rgba(35,31,32,.05);
+}
+
+.well {
+	padding: 0 !important;
 }

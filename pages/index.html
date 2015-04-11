@@ -27,112 +27,49 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-                <li>
+             <li>
                 <a href="index">Start</a>
             </li>
             <li>
-                <a href="mycards">My Cards</a>
+                <a href="mycards"><img src="images/icons/cards.png" class="nav-icon" alt="">My Cards</a>
+            </li>
+            <li class="nav-active">
+                <a href="map"><img src="images/icons/active/map.png" class="nav-icon" alt="">Map</a>
             </li>
             <li>
-                <a href="map">Map</a>
+                <a href="myjourney"><img src="images/icons/journey.png" class="nav-icon" alt="">My Journeys</a>
             </li>
-            <li>
-                <a href="myjourneys">My Journeys</a>
-            </li>
-        
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-          <div class="container-fluid navbarhej">
-            <div class="container-fluid">
-  <div class="col-xs-4 col-sm-4"><a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="glyphicon glyphicon-align-justify"></i></a></div>
-  <div class="col-xs-4 col-sm-4"><h3><p class="text-center">Welcome to Skanetrafiken</p></h3></div>
-  <div class="col-xs-4 col-sm-4">
-    <ul class="nav navbar-right top-nav">
-      <li id="notificationToggle"class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i id="dropDownImg" class="glyphicon glyphicon-bell"></i> <b class="caret"></b></a>
-        <ul id="notificationDropDown" class="dropdown-menu message-dropdown">
-          
-  </div>
-</div>
-    </div>
+         
+        <div class="container-fluid nav-bar">
+           <div class="row">
+              <div class="col-xs-4 col-sm-4"><img src="#" id="menu-toggle" alt=""></div>
+              <div class="col-xs-4 col-sm-4 nav-bar-text"><span>Map</span></div>
+              <div class="col-xs-4 col-sm-4"><img src="#" class="right" alt=""></div>
+            </div>
+        </div>
+        <div class="container-fluid">
+           <div class="row bus-search">
+              <div class="col-md-12"><input type="text" class="form-control bus-search-input"></div>
+            </div>
+        </div>
+    </div>    
     <!-- /#page-content-wrapper -->
 
 </div>
 <!-- /#wrapper -->
 
-                   <script>
-       $(function () {
-           $('[data-toggle="tooltip"]').tooltip()
-       })
-        </script>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
         <!-- NOKIA HERE MAP DIV -->
-        <div class="well" id="mapContainer"></div>
-        <script>
-            // Initialize the platform object:
-            var platform = new H.service.Platform({
-                'app_id': 'uC2PydFnCh7OcJnzAe0v',
-                'app_code': 'fAa9dOJLtNXOf41kU2wYHQ'
-            });
-
-            // Obtain the default map types from the platform object
-            var maptypes = platform.createDefaultLayers();
-
-            // Instantiate (and display) a map object:
-            var map = new H.Map(
-              document.getElementById('mapContainer'),
-              maptypes.normal.transit,
-              {
-                  zoom: 16,
-                  center: { lng: 12.975197, lat: 55.616691 }
-                //  center: { lng: 13.18801, lat: 55.70585 }
-              });
-
-            // Create the default UI:
-            var ui = H.ui.UI.createDefault(map, maptypes);
+        <div class="well map" id="mapContainer">
+          <div class="favorite-places">
             
-            // Enable the event system on the map instance:
-            var mapEvents = new H.mapevents.MapEvents(map);
-
-            // Add event listeners:
-            map.addEventListener('tap', function (evt) {
-                // Log 'tap' and 'mouse' events:
-                console.log(evt.type, evt.currentPointer.type);
-            });
-
-            // Instantiate the default behavior, providing the mapEvents object:
-            var behavior = new H.mapevents.Behavior(mapEvents);
-
-            window.addEventListener('resize', function () { map.getViewPort().resize(); });
-
-            // Create a marker icon from an image URL:
-           var icon = new H.map.Icon('http://maps.google.com/mapfiles/kml/paddle/4.png');
-           var busstop = new H.map.Icon('/images/skyltliten.png');
-           
-            var busicon = new H.map.Icon('/images/litenbussikon.png');
-                   var icon = new H.map.Icon('http://maps.google.com/mapfiles/kml/paddle/4.png');
-           var busstopRed = new H.map.Icon('/images/skyltliten.png');
-           var busstopGreen = new H.map.Icon('/images/gronskylt_360.png');
-           
-            var busiconRed = new H.map.Icon('/images/rodbuss_360.png');
-            var busiconGreen = new H.map.Icon('/images/gronbuss_360.png');
-            
-            var busiconRedEmpty = new H.map.Icon('/images/rodbuss1plutt.png');
-            var busiconRedNormal = new H.map.Icon('/images/rodbuss2pluttar.png');
-            var busiconRedFull = new H.map.Icon('/images/rodbuss3pluttar.png');
-            // Create a marker using the previously instantiated icon:
-            // var marker = new H.map.Marker({ lat: 52.5, lng: 13.4 }, { icon: icon });
-
-            // Add the marker to the map:
-            // map.addObject(marker);
-        </script>
+          </div>
+        </div>
 
 
 
@@ -163,8 +100,8 @@
     <script type="text/javascript" src="../js/test.js"></script>
     <script type="text/javascript" src="../js/busQuery.js"></script>
     <script type="text/javascript" src="../js/graphicHelper.js"></script>
-<script type="text/javascript" src="../js/offerStore.js"></script>
-<script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/offerStore.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
 
     <!-- /*** JS ***\ -->
 
