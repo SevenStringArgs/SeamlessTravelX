@@ -40,16 +40,7 @@ $(document).ready(function(){
 
 	$('#notificationToggle').focusout(function(){
 		$('.bus-search-input').fadeIn();
-	});   
-
-	$('.bus-search-input').keypress(function(e){
-		if(e.which === 13){
-			alert(e);
-			console.log(e);
-			var busNr = $('.bus-search-input').val();
-			console.log(busNr);
-		}
-	});
+	});  
 
 	console.log('Ready');
 	var map = new Map();
@@ -134,14 +125,22 @@ $(document).ready(function(){
 
 	$('.bus-search-input').keypress(function(e){
 		if(e.which === 13){
-			alert(e);
+			// alert(e);
 			console.log(e);
 			var busNr = $('.bus-search-input').val();
 			console.log(busNr);
 			if(isNaN(busNr) || !busNr){
 				BusHelper.setRoute(undefined);
 			} else {
-				BusHelper.setRoute(busNr);
+				if(!map.getTravelObject().busId){
+					map.filter = busNr;
+					BusHelper.setRoute(busNr);	
+					map.removeAllBuses();
+					setTimeout(function(buses) {
+						console.log("Agiain");
+						map.removeAllBuses();
+					}, 2000);
+				}
 			}
 		}
 	});	

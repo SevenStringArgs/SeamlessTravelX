@@ -1,3 +1,5 @@
+var BusRouteHelper = new (function(){
+
 var busRoutes = [];
 
 busRoutes.push({
@@ -591,3 +593,15 @@ busRoutes.push({
     }
   ]
 });
+
+return{
+  getRoute : function(line){
+    for (var i = busRoutes.length - 1; i >= 0; i--) {
+      if (busRoutes[i].number==line){
+        return busRoutes[i];
+      }
+    };
+  }
+}
+
+})();
