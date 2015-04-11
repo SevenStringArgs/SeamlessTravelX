@@ -18,6 +18,7 @@ $(document).ready(function(){
 	var travelListener = function(travelObj){
 		console.log('****** Travel Changed *****')
 		console.log(travelObj);
+		map.setTravelObj(travelObj);
 	}
 
 	var removeBusStop = function(busStop){

@@ -8,7 +8,7 @@ var BusHelper = (function(){
 		console.log('Getting buses');
 
 		$.ajax({
-			url: TravelX.url('/getBuses'),
+			url: TravelX.url('/getAllBuses'),
 			type: 'GET',
 			headers: { Accept : "application/json; charset=utf-8"}, 
 			data: {'id': line},

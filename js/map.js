@@ -1,5 +1,6 @@
 function Map(){
 			var hMap = {};
+      var travelObj = { busId: undefined };
 
 			function getLocation() {
 		    //get the geolocation of the device
@@ -19,7 +20,7 @@ function Map(){
            	document.getElementById('mapContainer'),
            	maptypes.normal.transit,
            	{
-           		zoom: 2,
+           		zoom: 6,
            		center: { lng: 12.975197, lat: 55.616691 }
                //  center: { lng: 13.18801, lat: 55.70585 }
            });
@@ -76,10 +77,12 @@ function Map(){
 
            hMap.addBus = function(bus){
               this.removeBus(bus);
-              var marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: hMap.busiconRed});
+              if(!travelObj.busId || travelObj.busId === bus.id){
+                var marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: hMap.busiconRed});
 
-              marker.busId = bus.id;
-              hMap.map.addObject(marker);
+                marker.busId = bus.id;
+                hMap.map.addObject(marker);
+             }     
            };
 
            hMap.removeBus = function(bus){
@@ -88,6 +91,10 @@ function Map(){
                   hMap.map.removeObject(obj);
               });
            };
+
+           hMap.setTravelObj = function(obj){
+              travelObj = obj;
+           }
            
            return hMap;
        }
