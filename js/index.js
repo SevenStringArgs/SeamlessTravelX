@@ -70,11 +70,20 @@ $(document).ready(function(){
             $('#myModalScanned').modal('show');  
         }  
         else {
-              $('#myModalExit').modal('show');
+            $('.bus-search-input').hide();  
+            $('#myModalExit').modal('show');
+                
         };
         
 	};
-
+    $("#button-accept").click(function(){
+        $('.bus-search-input').show();   
+    })
+    
+    $("#button-exit-accept").click(function(){
+        $('.bus-search-input').show();   
+    })
+    
 	var removeBusStop = function(busStop){
 		map.removeBusStop(busStop);
 	};
