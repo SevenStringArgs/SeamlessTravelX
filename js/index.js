@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var loop;
 	var offers = OfferStore.get();
 	var selectedLine = undefined;
+    var onBus = false;
 	console.log(offers);
 
 	$.each(offers, function(key, offer){
@@ -24,7 +25,6 @@ $(document).ready(function(){
 	$('#menu-toggle').click(function(e) {
 		e.preventDefault();
 		$("#wrapper").toggleClass("toggled");
-
 	});
     
 	$('#notificationToggle').on('click', function(){
@@ -66,10 +66,15 @@ $(document).ready(function(){
 		console.log(travelObj);
 		map.setTravelObj(travelObj);
         if(travelObj.busId != undefined){
+            onBus = true;
             $('.bus-search-input').hide();
-            $('#myModalScanned').modal('show');  
+            $('#myModalScanned').modal('show');
+            $('.information-bar').show();
+            timerFunction(200);
         }  
         else {
+            onBus = false;
+            $('.information-bar').hide();
             $('.bus-search-input').hide();  
             $('#myModalExit').modal('show');
                 
@@ -126,32 +131,6 @@ $(document).ready(function(){
 			console.log(evt.originalEvent);
 		});
 	};
-
-	$('#testNotification').on('click', function(){
-		$('#dropDownImg').removeClass('glyphicon-bell');
-		$('#dropDownImg').addClass('glyphicon-info-sign');
-	});
-
-	$('#menu-toggle').click(function(e) {
-		e.preventDefault();
-		$("#wrapper").toggleClass("toggled");
-
-	});
-
-	$('#notificationToggle').on('click', function(){
-		$('#dropDownImg').addClass('glyphicon-bell');
-		$('#dropDownImg').removeClass('glyphicon-info-sign');
-
-		if($('.bus-search-input').css('display') === 'none')
-			$('.bus-search-input').fadeIn();
-		else 
-			$('.bus-search-input').fadeOut();
-
-	});
-
-	$('#notificationToggle').focusout(function(){
-		$('.bus-search-input').fadeIn();
-	});   
 
 	$('.bus-search-input').keypress(function(e){
 		if(e.which === 13){
@@ -222,6 +201,26 @@ $(document).ready(function(){
 			}
 		});
 	}, 150);
+    
+    function timerFunction(secondsToDestination) {
+    var seconds = secondsToDestination;
+    var refreshIntervalId = setInterval(function(){
+        var minutes =seconds/60
+        var timestring ='';
+        if (minutes >5){
+            timestring = 'Min: ' + parseInt(minutes);
+        }
+        else if(minutes > 1){
+            timestring = 'Min: ' + parseInt(minutes) + ' Sec: ' + seconds%60;
+        }
+        else timestring = 'Sec: ' + seconds;
+        $('.information-bar').html(timestring);
+        seconds -= 1;
+        if(!onBus){
+            clearInterval(refreshIntervalId);  
+        }
+    }, 1000);
+    }
 
 	console.log(offers);
 });

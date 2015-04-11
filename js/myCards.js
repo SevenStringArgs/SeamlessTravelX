@@ -1,6 +1,4 @@
-var passangerChange = function(travelObj){
-    console.log(travelObj);
-}
+
 
 $(document).ready(function(){
     $('.information-bar').hide();
