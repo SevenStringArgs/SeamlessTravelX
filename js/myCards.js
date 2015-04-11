@@ -1,9 +1,8 @@
 $(document).ready(function(){
     $('.information-bar').hide();
     var onBus = false;
-    var cards = [{id:0, type:'cash',value:'250'},{id:1,type:'period',value:'5'}];
     var storage =$.localStorage;
-    cards[0].value -= parseInt(storage.get('minusCash'));
+    var cards = [{id:0, type:'cash',value:storage.get('cash')},{id:1,type:'period',value:'5'}];
     $.each(cards, function(key,card){
         var template = GraphicHelper.getCardTemplate('cardItem', card)
         console.log(template)
@@ -19,15 +18,12 @@ $(document).ready(function(){
     var refillCard = function(){
         var slickSlideId = $('.slickslider').slick('slickCurrentSlide');
         if(slickSlideId == 0){
-            
-            var spentAmount = storage.get('minusCash');
-            storage.set('minusCash','0');
-            console.log("spentAmount: " + spentAmount);
             var addAmount = $("#amount-selection0 option:selected").text();
             var currentAmount = $(".card-info0").text();
-            var newAmount = parseInt(addAmount) + parseInt(currentAmount) - parseInt(spentAmount);
+            var newAmount = parseInt(addAmount) + parseInt(currentAmount);
             $(".card-info0").empty();
             $(".card-info0").text(newAmount + " ");
+            storage.set('cash',newAmount);
         }
         else console.log("Fel Slide");
 

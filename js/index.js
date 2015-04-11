@@ -67,11 +67,11 @@ $(document).ready(function(){
             $('.information-bar').show();
             timerFunction(300);
             $('.lineid').html(travelObj.busId.charAt(3));
-            var debtAmount = storage.get('minusCash');
-            console.log("Before withdrawal:" + debtAmount);
-            debtAmount = parseInt(debtAmount) + 53;
-            console.log("After withdrawal:" + debtAmount);
-            storage.set('minusCash',debtAmount);
+            var cash = storage.get('cash');
+            console.log("Before withdrawal:" + cash);
+            cash = parseInt(cash) - 53;
+            console.log("After withdrawal:" + cash);
+            storage.set('cash',cash);
             map.showBusRoute(6);
         }  
         else {
