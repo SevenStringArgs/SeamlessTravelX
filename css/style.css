@@ -186,7 +186,7 @@ body {
 
 .map {
 	position: relative;
-	top: -60px;
+	top: -70px;
 }
 
 .bus-search {
@@ -196,7 +196,14 @@ body {
 }
 
 .bus-search-input {
+	background: #fff url(../images/icons/input-icon.png) no-repeat;
+	background-size: 25px 25px;
+	background-position: 10px;
+	text-indent: 30px;
 	border: 1px solid #c9d7e4;
+	height: 50px !important;
+	line-height: 50px;
+	color: #38424b;
 	-moz-box-shadow: 0 2px 0 rgba(35,31,32,.05);
 	-webkit-box-shadow: 0 2px 0 rgba(35,31,32,.05);
 	box-shadow: 0 2px 0 rgba(35,31,32,.05);
