@@ -100,7 +100,6 @@ $(document).ready(function(){
 				console.log('error getting buses');
 			} else {
 				console.log('Got buses');
-
 			}
 	});
     }, 150);

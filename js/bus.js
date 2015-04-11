@@ -28,6 +28,13 @@ var BusHelper = (function(){
 		});
 	};
 
+
+	var getBusRoutes = function(){
+		$.ajax({
+			url:
+		})
+	};
+
 	var startBusService = function(){
 			$.ajax({
 			url: TravelX.url('/map/start'),
