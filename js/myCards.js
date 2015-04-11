@@ -27,10 +27,6 @@ $(document).ready(function(){
 
         
     }
-    
-    $('#btnReFill1').click(function(){
-        refillCard();
-    });
     $('#btnReFill0').click(function(){
         refillCard();
     });
