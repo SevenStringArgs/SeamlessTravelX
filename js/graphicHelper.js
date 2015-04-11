@@ -36,8 +36,6 @@ var GraphicHelper = (function(){
            '<div class="card" id="cardId-' + card.id + '">' + 
                 '<div class="card-items-wrapper">' +
                     '<div class="slider">' +
-                        '<img src="#" alt="">' +
-                            '<img src="#" class="right" alt="">' + 
                     '</div>' +
                             '<div class="card-items">' +
                                 '<span class="card-type-text">'; 
@@ -90,7 +88,7 @@ var GraphicHelper = (function(){
             }
             refillModelTemplate += '</div>' +
               '<div class="modal-footer">' +
-                '<button type="button" class="left btn-accept">Re-fill card</button>' +
+                '<button type="button" class="left btn-accept" id="button-accept" data-dismiss="modal">Re-fill card</button>' +
                 '<button type="button" class="left btn-deny" data-dismiss="modal">Cancel</button>' +
               '</div>' +
             '</div>' +
