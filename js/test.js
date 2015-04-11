@@ -1,3 +1,6 @@
+var loops = [];
+var loop;
+
 $(document).ready(function(){
 	console.log('Ready');
 	var map = new Map();
@@ -83,4 +86,25 @@ $(document).ready(function(){
 	drawCachedBusStops(BusStopStorage.getAll());
 	registerMapEvents(map);
 
+    BusHelper.start();
+
+    clearInterval(loop);
+    loop = setInterval(function () {
+        BusHelper.get(3, function(err, data){
+		if(err){
+				console.log('error getting buses');
+			} else {
+				console.log('Got buses');
+
+			}
+	});
+    }, 150);
 });
+
+
+function findABus() {
+    //busnumber = $("#busnumber").val();
+    removeAllBuses();
+    executeGetBus(busnumber);
+}
+

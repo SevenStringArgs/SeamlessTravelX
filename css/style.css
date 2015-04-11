@@ -124,10 +124,6 @@ body {
 	border: none !important;
 }
 
-.modal-body-wrapper {
-	
-}
-
 .btn-accept {
 	background: #abdf6d;
 	color: #fff;
@@ -147,3 +143,39 @@ body {
 	border-radius: 4px;
 }
 
+#sidebar-wrapper {
+	background: #252c32 !important;
+}
+
+.sidebar-nav li {
+	line-height: 60px !important;
+	font-size: 18px;
+	text-indent: 15px !important;
+	font-weight: 400;
+}
+
+.sidebar-nav img {
+	margin-right: 15px;
+}
+
+.sidebar-nav li a {
+	color: #3f4b57;
+}
+
+.sidebar-nav li a:hover {
+	background: none;
+}
+
+.nav-active {
+	background: #1c2125;
+	font-weight: 600 !important;
+}
+
+.nav-active a {
+	color: #fff !important;
+}
+
+.nav-icon {
+	width: 30px;
+	height: 30px;
+}
