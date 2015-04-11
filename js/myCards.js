@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('.information-bar').hide();
     var onBus = false;
     var cards = [{id:0, type:'cash',value:'250'},{id:1,type:'period',value:'5'}];
 	console.log(cards);
@@ -36,6 +37,7 @@ $(document).ready(function(){
         $("#wrapper").toggleClass("toggled");
     });
     function timerFunction(secondsToDestination) {
+        $('.information-bar').show();
         var seconds = secondsToDestination;
         var refreshIntervalId = setInterval(function(){
             var minutes =seconds/60
@@ -52,7 +54,8 @@ $(document).ready(function(){
             seconds -= 1;
             if (onBus==false){
                 clearInterval(refreshIntervalId);
-                 $('.information-bar').html("klivit av");
+                 $('.information-bar').html("");
+                 $('.information-bar').hide();    
             } 
         }, 1000);
     }
