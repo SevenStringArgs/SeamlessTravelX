@@ -52,7 +52,7 @@ var GraphicHelper = (function(){
                                 '<br>' +
                                 '<span class="card-info">' +
                                 '</span>' +
-                                '<div class="refill-button right" data-toggle="modal" data-target="#myModal">' +
+                                '<div class="refill-button right" data-toggle="modal" data-target="#myModal-' + card.id + '">' +
                                      'Re-fill' +
                                 '</div>' + 
                            '</div>' +
@@ -60,6 +60,44 @@ var GraphicHelper = (function(){
                '</div>';
 
 		return $.parseHTML(cardtemplate);
+	} 
+        templates.refillModelItem = function(card){
+
+		var refillModelTemplate = 
+        '<div class="modal fade" id="myModal-' + card.id + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+            '<div class="modal-dialog">' +
+                '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                        '<h4 class="modal-title" id="myModalLabel">Refill your card:</h4>' +
+                    '</div>' +
+                '<div class="modal-body">' +
+            '<div class="modal-body-wrapper">';
+            if(card.type=="cash"){
+                refillModelTemplate += '<label for="amount-selection">Choose amount:</label>' +
+                '<select name="amount-selection" id="" class="amount-selection form-control">' +
+                    '<option value="">100</option>' +
+                    '<option value="">200</option>' +
+                    '<option value="">300</option>' +
+                '</select>';     
+            }
+            else{
+                                refillModelTemplate += '<label for="amount-selection">Choose amount of days:</label>' +
+                '<select name="amount-selection" id="" class="amount-selection form-control">' +
+                    '<option value="">10</option>' +
+                    '<option value="">30</option>' +
+                    '<option value="">60</option>' +
+                '</select>';    
+            }
+            refillModelTemplate += '</div>' +
+              '<div class="modal-footer">' +
+                '<button type="button" class="left btn-accept">Re-fill card</button>' +
+                '<button type="button" class="left btn-deny" data-dismiss="modal">Cancel</button>' +
+              '</div>' +
+            '</div>' +
+           '</div>' +
+          '</div>' +
+        '</div>';
+		return $.parseHTML(refillModelTemplate);
 	}
 	return {
 		getStdSlick: function(){
@@ -83,6 +121,9 @@ var GraphicHelper = (function(){
 		},
         getCardTemplate: function(cardtemplate, obj){
 			return templates[cardtemplate](obj);
+		},
+        getRefillModelTemplate: function(refillModelTemplate,obj){
+			return templates[refillModelTemplate](obj);
 		}
 	}
 })();

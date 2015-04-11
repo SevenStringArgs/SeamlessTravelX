@@ -1,10 +1,16 @@
 $(document).ready(function(){
+    
+   
+    
     var cards = [{id:0, type:'cash',value:'250'},{id:1,type:'period',value:'5'}];
 	console.log(cards);
     $.each(cards, function(key,card){
         var template = GraphicHelper.getCardTemplate('cardItem', card)
         console.log(template)
         $('.slickslider').append(template);
+        var modelTemplate = GraphicHelper.getRefillModelTemplate('refillModelItem',card)
+        console.log(modelTemplate);
+        $('.graphicModel').append(modelTemplate);
     })
     $('.sucess-message').hide();
     $('.slickslider').slick();
@@ -12,7 +18,6 @@ $(document).ready(function(){
     $("#enterButton").click(function(){
         $(".sucess-message").show();
         $(".message-thick").text("Card Scanned!");
-        
     });
     
     $("#exitButton").click(function(){
