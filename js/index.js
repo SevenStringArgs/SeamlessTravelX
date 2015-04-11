@@ -4,6 +4,54 @@ $(document).ready(function(){
 	var loop;
 	var offers = OfferStore.get();
 	var selectedLine = undefined;
+	console.log(offers);
+
+	$.each(offers, function(key, offer){
+		var template = GraphicHelper.getTemplate('notificationItem', offer)
+		console.log(template);
+		var ul = $(document).find('#notificationDropDown');
+		$('#notificationDropDown').append(template);
+		var theLi = $('#notificationDropDown').find('#offerId-' + offer.id);
+		theLi.find('strong').text(offer.company);
+		theLi.find('.offerTag').text(offer.offer);
+	});
+
+	$('#testNotification').on('click', function(){
+		$('#dropDownImg').removeClass('glyphicon-bell');
+		$('#dropDownImg').addClass('glyphicon-info-sign');
+	});
+
+	$('#menu-toggle').click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+
+	});
+    
+	$('#notificationToggle').on('click', function(){
+		$('#dropDownImg').addClass('glyphicon-bell');
+		$('#dropDownImg').removeClass('glyphicon-info-sign');
+
+		if($('.bus-search-input').css('display') === 'none')
+			$('.bus-search-input').fadeIn();
+		else 
+			$('.bus-search-input').fadeOut();
+
+	});
+
+	$('#notificationToggle').focusout(function(){
+		$('.bus-search-input').fadeIn();
+	});   
+
+	$('.bus-search-input').keypress(function(e){
+		if(e.which === 13){
+			alert(e);
+			console.log(e);
+			var busNr = $('.bus-search-input').val();
+			console.log(busNr);
+		}
+	});
+
+	console.log('Ready');
 	var map = new Map();
 	var drawOnMap = { start: undefined, end: undefined };
 	var bookmarker = new Bookmarker();
@@ -17,8 +65,25 @@ $(document).ready(function(){
 		console.log('****** Travel Changed *****')
 		console.log(travelObj);
 		map.setTravelObj(travelObj);
+        if(travelObj.busId != undefined){
+            $('.bus-search-input').hide();
+            $('#myModalScanned').modal('show');  
+        }  
+        else {
+            $('.bus-search-input').hide();  
+            $('#myModalExit').modal('show');
+                
+        };
+        
 	};
-
+    $("#button-accept").click(function(){
+        $('.bus-search-input').show();   
+    })
+    
+    $("#button-exit-accept").click(function(){
+        $('.bus-search-input').show();   
+    })
+    
 	var removeBusStop = function(busStop){
 		map.removeBusStop(busStop);
 	};
@@ -95,9 +160,9 @@ $(document).ready(function(){
 			var busNr = $('.bus-search-input').val();
 			console.log(busNr);
 			if(isNaN(busNr) || !busNr){
-				BusHelper.selectedLine = undefined
+				BusHelper.setRoute(undefined);
 			} else {
-				BusHelper.selectedLine = busNr;
+				BusHelper.setRoute(busNr);
 			}
 		}
 	});	
