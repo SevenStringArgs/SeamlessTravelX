@@ -95,9 +95,9 @@ $(document).ready(function(){
 			var busNr = $('.bus-search-input').val();
 			console.log(busNr);
 			if(isNaN(busNr) || !busNr){
-				BusHelper.selectedLine = undefined
+				BusHelper.setRoute(undefined);
 			} else {
-				BusHelper.selectedLine = busNr;
+				BusHelper.setRoute(busNr);
 			}
 		}
 	});	
