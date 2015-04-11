@@ -3,21 +3,13 @@
         <title>IoT map demo</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-        <script src="../js/iotguidemo.js"></script>
-
-        <!-- NOKIA HERE MAPS -->
-        <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
-        <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
-        <script src="http://js.api.here.com/v3/3.0/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
-        <link rel="stylesheet" type="text/css" href="http://js.api.here.com/v3/3.0/mapsjs-ui.css" />
-        <script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
-
         <!-- BOOTSTRAP -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+   
+    <link rel="stylesheet" href="../includes/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../includes/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../includes/here/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../includes/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../includes/slick/slick-theme.css"/>
     </head>
     <body>
         <!-- BOOTSTRAP NAVBAR -->
@@ -32,7 +24,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">Buses Live</a>
-                </div>
+                </div> 
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -118,5 +110,37 @@
             // Add the marker to the map:
             // map.addObject(marker);
         </script>
+
+
+
+    <!-- *** Third Party JS *** -->
+
+    <script type="text/javascript" src="../includes/jquery/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="../includes/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../includes/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../includes/storageApi/jquery.storageapi.min.js"></script>
+
+
+    <!-- NOKIA HERE MAPS -->
+    <script src="../includes/here/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../includes/here/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../includes/here/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../includes/here/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <!-- /*** Third Party JS ***\ -->
+
+    <!-- *** JS *** -->
+    <script type="text/javascript" src="../js/storageHandler.js"></script>
+    <script type="text/javascript" src="../js/busStop.js"></script>
+    <script type="text/javascript" src="../js/map.js"></script>
+    <script type="text/javascript" src="../js/graphicHelper.js"></script>
+    <script type="text/javascript" src="../js/bookmarker.js"></script>  
+    <script type="text/javascript" src="../js/travelx.js"></script>
+    <script type="text/javascript" src="../js/test.js"></script>
+    <script type="text/javascript" src="../js/busQuery.js"></script>
+
+    <!-- /*** JS ***\ -->
+
     </body>
     </html>
