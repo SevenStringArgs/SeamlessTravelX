@@ -78,7 +78,10 @@ function Map(){
            hMap.addBus = function(bus){
               this.removeBus(bus);
               if(!travelObj.busId || travelObj.busId === bus.id){
-                var marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: hMap.busiconRed});
+
+                var busicon = travelObj.busId ? hMap.busiconGreen : hMap.busiconRed;
+
+                var marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: busicon});
 
                 marker.busId = bus.id;
                 hMap.map.addObject(marker);
