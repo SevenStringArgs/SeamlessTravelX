@@ -52,6 +52,10 @@ $(document).ready(function(){
 		}
 	};
 
+	var showNotificationSymbol = function(){
+		$('#notificationToggle').append('<div class="notified">Notified</div>');
+	}
+
 	var travelListener = function(travelObj){
 		console.log('****** Travel Changed *****')
 		console.log(travelObj);
@@ -71,6 +75,7 @@ $(document).ready(function(){
             $('#myModalExit').modal('show');
             map.removeLastRoute();
             drawCachedBusStops(BusStopStorage.getAll());
+            showNotificationSymbol();
         };
         
 	};
