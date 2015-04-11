@@ -33,17 +33,17 @@ var GraphicHelper = (function(){
     	templates.cardItem = function(card){
 
 		var cardtemplate = 
-           '<div class="card" id="cardId-' + card.id + '">' + 
+           '<div class="card" id="cardId-' + card.id + '"><img class="jojo-card" src="../images/jojo.png" alt="" width="270" height="110" />' + 
                 '<div class="card-items-wrapper">' +
                     '<div class="slider">' +
                     '</div>' +
                             '<div class="card-items">' +
                                 '<span class="card-type-text">'; 
                                     if(card.type=='cash'){                                    
-                                    cardtemplate+='Remaining Amount: ' + card.value;    
+                                    cardtemplate+='Remaining Amount: ' + '<br><span class="card-info">' + card.value + ' kr</span>';    
                                     }
                                     else{
-                                    cardtemplate +='Remaining Time: ' + card.value + ' Days';    
+                                    cardtemplate +='Expires in: ' + '<br><span class="card-info">' + card.value + ' days </span>';    
                                     }
                                 cardtemplate +=    
                                 '</span>' +
