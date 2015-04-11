@@ -139,7 +139,7 @@ $(document).ready(function(){
 					setTimeout(function(buses) {
 					 	console.log("Agiain");
 					 	map.removeAllBuses();
-					 }, 800);
+					 }, 00);
 				}
 			}
 		}
@@ -199,7 +199,7 @@ $(document).ready(function(){
 				console.log('Got buses');
 			}
 		});
-	}, 900);
+	}, 1000);
     
     function timerFunction(secondsToDestination) {
     var seconds = secondsToDestination;
