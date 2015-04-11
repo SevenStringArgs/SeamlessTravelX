@@ -214,4 +214,8 @@ body {
     position: fixed; 
     bottom: 19px; 
     right: 19px; 
+
+
+#notificationDropDown {
+ 	z-index: 9995 !important;  
 }
