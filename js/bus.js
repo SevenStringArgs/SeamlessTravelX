@@ -3,43 +3,47 @@ var BusHelper = (function(){
 	var travelBus = { busId: undefined };
 	var listeners = [];
 	var travelListeners = [];
-
-	var getBuses = function(line, done){
+	var selectedRoute = undefined;
+	var suffix = '';
+	var getBuses = function(done){
 		console.log('Getting buses');
+		
+		suffix = selectedRoute ? '/getBuses/?id=' + selectedRoute: '/getAllBuses';
 
-		$.ajax({
-			url: TravelX.url('/getAllBuses'),
-			type: 'GET',
-			headers: { Accept : "application/json; charset=utf-8"}, 
-			data: {'id': line},
-			success: function(data){
-				console.log('Got bus data');
-				
-				$.each(data, function (n, bus) {
-					if(!travelBus.busId && bus.onBus){
-						travelBus.busId = bus.id;
-						$.each(travelListeners, function(key, listener) { listener(travelBus); });
-					} else if(travelBus.busId === bus.id && !bus.onBus){
-						travelBus.busId = undefined;
-						$.each(travelListeners, function(key, listener) { listener(travelBus); });
-					}
+	
+			$.ajax({
+				url: TravelX.url(suffix),
+				type: 'GET',
+				headers: { Accept : "application/json; charset=utf-8"}, 
+				data: {'id': selectedRoute},
+				success: function(data){
+					console.log('Got bus data');
 
-					$.each(listeners, function (n, listener) {
-						listener(bus);
+					$.each(data, function (n, bus) {
+						if(!travelBus.busId && bus.onBus){
+							travelBus.busId = bus.id;
+							$.each(travelListeners, function(key, listener) { listener(travelBus); });
+						} else if(travelBus.busId === bus.id && !bus.onBus){
+							travelBus.busId = undefined;
+							$.each(travelListeners, function(key, listener) { listener(travelBus); });
+						}
+
+						$.each(listeners, function (n, listener) {
+							listener(bus);
+						});
 					});
-				});
 
-				done(null, data);
-			},
-			error: function(error){
-				console.log('Got buses error');
-				done(error, null)	
-			}
-		});
+					done(null, data);
+				},
+				error: function(error){
+					console.log('Got buses error');
+					done(error, null)	
+				}
+			}); 
 	};
 
 	var startBusService = function(){
-			$.ajax({
+		$.ajax({
 			url: TravelX.url('/map/start'),
 			type: 'GET',
 			headers: { Accept : "application/json; charset=utf-8"}, 
@@ -54,25 +58,26 @@ var BusHelper = (function(){
 		});
 	}
 
-return {
-	start : function(){
-		startBusService();
-	},
+	return {
+		start : function(){
+			startBusService();
+		},
 
-	addBus : function(){
+		addBus : function(){
 
-	},
+		},
 
-	get : function(line, done){
-		getBuses(line, done);
-	},
+		get : function(line, done){
+			selectedRoute = line;
+			getBuses(done);
+		},
 
-	onAddedBus : function(e){
-		listeners.push(e);
-	},
+		onAddedBus : function(e){
+			listeners.push(e);
+		},
 
-	addTravelListener: function(e){
-		travelListeners.push(e);
+		addTravelListener: function(e){
+			travelListeners.push(e);
+		}
 	}
-}
 })();
