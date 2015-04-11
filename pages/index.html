@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="../includes/sbtheme/sb-admin.css" />
     <link rel="stylesheet" href="../includes/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../includes/bootstrap/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="../includes/here/mapsjs-ui.css" />
-    <link rel="stylesheet" type="text/css" href="../includes/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="../includes/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="../includes/here/mapsjs-ui.css" />
+    <link rel="stylesheet" href="../includes/slick/slick.css"/>
+    <link rel="stylesheet" href="../includes/slick/slick-theme.css"/>
     <link rel="stylesheet" href="../includes/themebootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../includes/themebootstrap/css/simple-sidebar.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -66,8 +66,15 @@
     <ul class="nav navbar-right top-nav">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i> <b class="caret"></b></a>
-        <ul class="dropdown-menu message-dropdown">
-          <li class="message-preview">
+        <ul id="notificationDropDown" class="dropdown-menu message-dropdown">
+          
+         
+
+
+
+
+
+         <!--  <li class="message-preview">
             <a href="#">
               <div class="media">
                 <span class="pull-left">
@@ -81,40 +88,10 @@
                 </div>
               </div>
             </a>
-          </li>
-          <li class="message-preview">
-            <a href="#">
-              <div class="media">
-                <span class="pull-left">
-                  <img class="media-object" src="http://placehold.it/50x50" alt="">asd
-                </span>
-                <div class="media-body">
-                  <h5 class="media-heading"><strong>John Smith</strong>
-                  </h5>
-                  <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="message-preview">
-            <a href="#">
-              <div class="media">
-                <span class="pull-left">
-                  <img class="media-object" src="http://placehold.it/50x50" alt="">
-                </span>
-                <div class="media-body">
-                  <h5 class="media-heading"><strong>John Smith</strong>
-                  </h5>
-                  <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="message-footer">
+          </li> -->
+         <!--  <li class="message-footer">
             <a href="#">Read All New Messages</a>
-          </li>
+          </li> -->
         </ul>
       </li>
     </ul>
@@ -171,12 +148,12 @@
 <script type="text/javascript" src="../includes/storageApi/jquery.storageapi.min.js"></script>
 
 
-
-
 <!-- /*** Third Party JS ***\ -->
 
 <!-- *** JS *** -->
-<script type="text/javascript" src="../js/toggle.js"></script>
+<script type="text/javascript" src="../js/graphicHelper.js"></script>
+<script type="text/javascript" src="../js/offerStore.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
 
 
 
