@@ -29,12 +29,12 @@
 
     width: 20px;
     height: 20px;
-    margin-top: -10px;
+    margin-top: 10px;
     padding: 0;
 
     cursor: pointer;
 
-    color: transparent;
+    color: #409E8E;
     border: none;
     outline: none;
     background: transparent;
@@ -77,11 +77,11 @@
 
 .slick-prev
 {
-    left: -25px;
+    left: 25px;
 }
 [dir='rtl'] .slick-prev
 {
-    right: -25px;
+    right: 22px;
     left: auto;
 }
 .slick-prev:before
@@ -95,7 +95,7 @@
 
 .slick-next
 {
-    right: -25px;
+    right: 25px;
 }
 [dir='rtl'] .slick-next
 {

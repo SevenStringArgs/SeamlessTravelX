@@ -13,13 +13,17 @@ $(document).ready(function(){
         $('.graphicModel').append(modelTemplate);
     })
     $('.sucess-message').hide();
-    $('.slickslider').slick();
+    $('.slickslider').slick({
+        dots : true
+    });
     
     $("#enterButton").click(function(){
         $(".sucess-message").show();
         $(".message-thick").text("Card Scanned!");
     });
-    
+    $("#button-accept").click(function(){
+        $("#successModal").modal();
+    })
     $("#exitButton").click(function(){
         $(".sucess-message").show();
         $(".message-thick").text("Bus Exited!");
