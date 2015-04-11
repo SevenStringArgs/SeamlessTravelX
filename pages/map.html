@@ -1,46 +1,69 @@
     <html>
     <head>
         <title>IoT map demo</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
         <!-- BOOTSTRAP -->
-   
+    <link rel="stylesheet" href="../includes/sbtheme/sb-admin.css" />
     <link rel="stylesheet" href="../includes/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../includes/bootstrap/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="../includes/here/mapsjs-ui.css" />
-    <link rel="stylesheet" type="text/css" href="../includes/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="../includes/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="../includes/here/mapsjs-ui.css" />
+    <link rel="stylesheet" href="../includes/slick/slick.css"/>
+    <link rel="stylesheet" href="../includes/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="../includes/themebootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../includes/themebootstrap/css/simple-sidebar.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     </head>
     <body>
         <!-- BOOTSTRAP NAVBAR -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Buses Live</a>
-                </div> 
+<div id="wrapper">
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <div class="navbar-form navbar-left" role="search">
-                            <a href="/" class="btn btn-default custom"><i class="glyphicon glyphicon-home"></i> Home</a>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Bus #" id="busnumber">
-                        </div>           
-                        <button class="btn btn-default" onclick="findABus();">Search</button>
-                         <button class="btn btn-default" onclick="displayFilteredBusStopsOnMap();">Services</button>
-                          <button class="btn btn-default" onclick="resetDemo();">Demo</button>
-                         <label id="minutes"></label>
-                        
-                          <button id="deals" style="display:none" type="button" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Wait time at Malmo Kockums: 5 min. 7/11 offers you coffee for only 10 kr while you wait.">
-               <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> <strong>1</strong></button> 
-                    </div>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+                <li>
+                <a href="index">Start</a>
+            </li>
+            <li>
+                <a href="mycards">My Cards</a>
+            </li>
+            <li>
+                <a href="map">Map</a>
+            </li>
+            <li>
+                <a href="myjourneys">My Journeys</a>
+            </li>
+        
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+          <div class="container-fluid navbarhej">
+            <div class="container-fluid">
+  <div class="col-xs-4 col-sm-4"><a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="glyphicon glyphicon-align-justify"></i></a></div>
+  <div class="col-xs-4 col-sm-4"><h3><p class="text-center">Welcome to Skanetrafiken</p></h3></div>
+  <div class="col-xs-4 col-sm-4">
+    <ul class="nav navbar-right top-nav">
+      <li id="notificationToggle"class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i id="dropDownImg" class="glyphicon glyphicon-bell"></i> <b class="caret"></b></a>
+        <ul id="notificationDropDown" class="dropdown-menu message-dropdown">
+          
+  </div>
+</div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
                    <script>
        $(function () {
            $('[data-toggle="tooltip"]').tooltip()
@@ -139,6 +162,9 @@
     <script type="text/javascript" src="../js/travelx.js"></script>
     <script type="text/javascript" src="../js/test.js"></script>
     <script type="text/javascript" src="../js/busQuery.js"></script>
+    <script type="text/javascript" src="../js/graphicHelper.js"></script>
+<script type="text/javascript" src="../js/offerStore.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
 
     <!-- /*** JS ***\ -->
 
