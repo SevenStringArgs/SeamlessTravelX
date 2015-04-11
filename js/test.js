@@ -15,6 +15,11 @@ $(document).ready(function(){
 		}
 	};
 
+	var travelListener = function(travelObj){
+		console.log('****** Travel Changed *****')
+		console.log(travelObj);
+	}
+
 	var removeBusStop = function(busStop){
 		map.removeBusStop(busStop);
 	};
@@ -91,6 +96,7 @@ $(document).ready(function(){
 	registerMapEvents(map);
 
 	BusHelper.onAddedBus(drawNewBus);
+	BusHelper.addTravelListener(travelListener);
     BusHelper.start();
 
     clearInterval(loop);
@@ -101,7 +107,7 @@ $(document).ready(function(){
 			} else {
 				console.log('Got buses');
 			}
-	});
+		});
     }, 150);
 });
 

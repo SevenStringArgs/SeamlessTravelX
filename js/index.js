@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	var offers = OfferStore.get();
 	console.log(offers);
 
