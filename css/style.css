@@ -1,3 +1,16 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
 .centerDropdown {
     left: auto !important;
     right: -25% !important;
@@ -12,8 +25,125 @@
     margin-right: auto;
 }
 
-.navbarhej {
+.nav-bar {
 	border-bottom: 2px solid #c9d7e4;
 	margin-left:-19px;
 	margin-right:-19px;
+	padding-bottom: 15px;
 }
+
+.nav-bar-text {
+	text-align: center;
+	color: #79858b;
+	font-size: 24px;
+	font-weight: 300;
+}
+
+.card {
+	background: #409e8e;
+	height: 290px;
+	margin: 0 auto;
+	margin-top: 45px !important;
+	border-radius: 8px;
+}
+
+.card-items-wrapper {
+	max-width: 550px;
+	margin: 0 auto;
+}
+
+.card-items {
+	position: relative;
+	top: 190px;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.slider {
+	position: relative;
+	top: 130px;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.sucess-message {
+	background: #abdf6d;
+	padding: 15px;
+	border-radius: 4px;
+	margin-top: 15px;
+	text-align: center;
+	color: #506b31;
+	font-size: 22px;
+}
+
+.message-thick {
+	font-weight: 600;
+}
+
+.card-type-text {
+	color: #fff;
+	font-size: 22px;
+}
+
+.card-info {
+	font-size: 18px;
+	color: #266156;
+}
+
+.refill-button {
+	background: #28414c;
+	border-radius: 4px;
+	padding: 15px;
+	color: #fff;
+	position: relative;
+	font-size: 18px;
+	bottom: 30px;
+	-moz-box-shadow: 0 2px 0 rgba(35,31,32,.2);
+	-webkit-box-shadow: 0 2px 0 rgba(35,31,32,.2);
+	box-shadow: 0 2px 0 rgba(35,31,32,.2);
+}
+
+/* Bootstrap re-styling */
+
+.modal-footer {
+	border-top: none !important;
+	padding-left: 0 !important;
+}
+
+.modal-header {
+	background: #aabed0;
+	color: #fff;
+	text-align: center;
+	border-bottom: none !important;
+	-webkit-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+
+.modal-content {
+	box-shadow: none !important;
+	border: none !important;
+}
+
+.modal-body-wrapper {
+	
+}
+
+.btn-accept {
+	background: #abdf6d;
+	color: #fff;
+	box-shadow: none;
+	border: none;
+	padding: 15px;
+	border-radius: 4px;
+	margin-right: 15px;
+}
+
+.btn-deny {
+	background: #df6d6d;
+	color: #fff;
+	box-shadow: none;
+	border: none;
+	padding: 15px;
+	border-radius: 4px;
+}
+
