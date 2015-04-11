@@ -108,6 +108,8 @@ body {
 	padding: 15px;
 	color: #fff;
 	position: relative;
+	width: 110px;
+	text-align: center;
 	margin-top: -25px;
 	font-size: 18px;
 	bottom: 30px;
