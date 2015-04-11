@@ -137,9 +137,9 @@ $(document).ready(function(){
 					BusHelper.setRoute(busNr);	
 					map.removeAllBuses();
 					setTimeout(function(buses) {
-						console.log("Agiain");
-						map.removeAllBuses();
-					}, 2000);
+					 	console.log("Agiain");
+					 	map.removeAllBuses();
+					 }, 00);
 				}
 			}
 		}
@@ -199,7 +199,7 @@ $(document).ready(function(){
 				console.log('Got buses');
 			}
 		});
-	}, 150);
+	}, 1000);
     
     function timerFunction(secondsToDestination) {
     var seconds = secondsToDestination;
