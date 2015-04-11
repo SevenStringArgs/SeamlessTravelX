@@ -142,7 +142,7 @@ body {
 	background: #df6d6d;
 	color: #fff;
 	box-shadow: none;
-	border: none;
+	border: black;
 	padding: 15px;
 	border-radius: 4px;
 }
@@ -204,4 +204,14 @@ body {
 
 .well {
 	padding: 0 !important;
+}
+
+.information-bar {
+    background: #000;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    position: fixed; 
+    bottom: 19px; 
+    right: 19px; 
 }
