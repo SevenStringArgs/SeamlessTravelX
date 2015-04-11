@@ -8,7 +8,9 @@ $(document).ready(function(){
 		console.log(template);
 		var ul = $(document).find('#notificationDropDown');
 		$('#notificationDropDown').append(template);
-		console.log(template[0]);
+		var theLi = $('#notificationDropDown').find('#offerId-' + offer.id);
+		theLi.find('strong').text(offer.company);
+		theLi.find('.offerTag').text(offer.offer);
 	});
 
 

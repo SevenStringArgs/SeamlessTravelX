@@ -13,7 +13,7 @@ var GraphicHelper = (function(){
 	templates.notificationItem = function(offer){
 
 		var template = 
-		'<li class="message-preview">' +
+		'<li class="message-preview" id="offerId-' + offer.id +'" >' +
 			'<a href="#">' + 
 				'<div class="media">' +
 					'<span class="pull-left">' +
@@ -22,14 +22,11 @@ var GraphicHelper = (function(){
 					'<div class="media-body">' +
 						'<h5 class="media-heading"><strong class="companyName"></strong></h5>' +
 						'<p class="small text-muted"><i class="fa fa-clock-o">Yesterday at 4:32 PM</i></p>' +
-						'<p></p>' +
+						'<p class="offerTag"></p>' +
 					'</div>' +
 				'</div>' +
 			'</a>' +
 		'</li>';
-
-		$(template).find('.companyName').html(offer.company);
-
 
 		return $.parseHTML(template);
 	}
