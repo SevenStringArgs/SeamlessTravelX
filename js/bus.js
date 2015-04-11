@@ -3,19 +3,19 @@ var BusHelper = (function(){
 	var travelBus = { busId: undefined };
 	var listeners = [];
 	var travelListeners = [];
-	var selectedRoute = undefined;
+	var route = undefined;
 	var suffix = '';
-	var getBuses = function(done){
+	var getBuses = function(line, done){
 		console.log('Getting buses');
 		
-		suffix = selectedRoute ? '/getBuses/?id=' + selectedRoute: '/getAllBuses';
+		suffix = line ? '/getBuses/?id=' + line: '/getAllBuses';
 
 	
 			$.ajax({
 				url: TravelX.url(suffix),
 				type: 'GET',
 				headers: { Accept : "application/json; charset=utf-8"}, 
-				data: {'id': selectedRoute},
+				data: {'id': line},
 				success: function(data){
 					console.log('Got bus data');
 
@@ -67,9 +67,8 @@ var BusHelper = (function(){
 
 		},
 
-		get : function(line, done){
-			selectedRoute = line;
-			getBuses(done);
+		get : function(done){
+			getBuses(route, done);
 		},
 
 		onAddedBus : function(e){
@@ -78,6 +77,10 @@ var BusHelper = (function(){
 
 		addTravelListener: function(e){
 			travelListeners.push(e);
+		},
+
+		setRoute: function(newRoute){
+			route = newRoute;
 		}
 	}
 })();
