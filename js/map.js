@@ -51,7 +51,7 @@ function Map(){
 
            if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(function(pos){
-              hMap.map.setZoom(14, true);
+              hMap.map.setZoom(15, true);
 		        	hMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
 		        	hMap.map.addObject(new H.map.Marker({lng: pos.coords.longitude, lat: pos.coords.latitude}, {icon: hMap.busstop}));
 
