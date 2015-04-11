@@ -61,6 +61,7 @@ $(document).ready(function(){
             $('.bus-search-input').hide();
             $('#myModalScanned').modal('show');
             $('.information-bar').show();
+            map.showBusRoute(6);
             timerFunction(200);
         }  
         else {
@@ -68,7 +69,8 @@ $(document).ready(function(){
             $('.information-bar').hide();
             $('.bus-search-input').hide();  
             $('#myModalExit').modal('show');
-                
+            map.removeLastRoute();
+            drawCachedBusStops(BusStopStorage.getAll());
         };
         
 	};
