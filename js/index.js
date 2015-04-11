@@ -52,6 +52,10 @@ $(document).ready(function(){
 		}
 	};
 
+	var showNotificationSymbol = function(){
+		$('#notificationToggle').append('<div class="notified">Notified</div>');
+	}
+
 	var travelListener = function(travelObj){
 		console.log('****** Travel Changed *****')
 		console.log(travelObj);
@@ -68,14 +72,16 @@ $(document).ready(function(){
             debtAmount = parseInt(debtAmount) + 53;
             console.log("After withdrawal:" + debtAmount);
             storage.set('minusCash',debtAmount);
-            
+            map.showBusRoute(6);
         }  
         else {
             onBus = false;
             $('.information-bar').hide();
             $('.bus-search-input').hide();  
             $('#myModalExit').modal('show');
-                
+            map.removeLastRoute();
+            drawCachedBusStops(BusStopStorage.getAll());
+            showNotificationSymbol();
         };
         
 	};
