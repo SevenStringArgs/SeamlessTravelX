@@ -25,7 +25,7 @@ $(document).ready(function(){
 		$("#wrapper").toggleClass("toggled");
 
 	});
-
+    
 	$('#notificationToggle').on('click', function(){
 		$('#dropDownImg').addClass('glyphicon-bell');
 		$('#dropDownImg').removeClass('glyphicon-info-sign');
@@ -53,7 +53,6 @@ $(document).ready(function(){
 	console.log('Ready');
 	var map = new Map();
 
-
 	var drawOnMap = { start: undefined, end: undefined };
 	
 	var bookmarker = new Bookmarker();
@@ -68,7 +67,16 @@ $(document).ready(function(){
 		console.log('****** Travel Changed *****')
 		console.log(travelObj);
 		map.setTravelObj(travelObj);
-	}
+        if(travelObj.busId != undefined){
+            $('.bus-search-input').hide();
+            $('#myModalScanned').modal('show');  
+        }  
+        else {
+              $('#myModalExit').modal('show');
+        };
+        
+	};
+
 
 	var removeBusStop = function(busStop){
 		map.removeBusStop(busStop);
