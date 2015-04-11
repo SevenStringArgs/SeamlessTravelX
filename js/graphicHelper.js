@@ -97,6 +97,26 @@ var GraphicHelper = (function(){
         '</div>';
 		return $.parseHTML(refillModelTemplate);
 	}
+        templates.modalScannedItem = function (){
+            var modelScannedTemplate =
+            <div class="modal fade" id="myModalScanned" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <'div class="modal-dialog">' + 
+                '<div class="modal-content">' +
+                  '<div class="modal-header">' +
+                    '<h4 class="modal-title" id="myModalLabel">Scanned</h4>' +
+                  '</div>' +
+                  '<div class="modal-body">' +
+                    '<div class="modal-body-wrapper">' +
+                     '<h3>Your card is now scanned!</h3>' +
+                      '</div>' +
+                      '<div class="modal-footer">' +
+                        '<button type="button" class="left btn-accept" data-dismiss="modal">Ok</button>' +
+                      '</div>' +
+                '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>';
+        }
 	return {
 		getStdSlick: function(){
 			return stdSlick;
@@ -122,6 +142,9 @@ var GraphicHelper = (function(){
 		},
         getRefillModelTemplate: function(refillModelTemplate,obj){
 			return templates[refillModelTemplate](obj);
-		}
+		},
+        getModalScanned: function(modelScannedTemplate){
+            return templates[modelScannedTemplate];
+        }
 	}
 })();
