@@ -21,7 +21,7 @@
     <meta name="author" content="">
     </head>
     <body>
-                <!-- Model Scanned -->
+    <!-- Model Scanned -->
     <div class="modal fade" id="myModalScanned" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -55,7 +55,33 @@
                 <h4>Welcome back!</h4>
           </div>
           <div class="modal-footer">
-            <div  class="left btn-accept" id="button-exit-accept"data-dismiss="modal">Ok</div>
+            <div class="left btn-accept" id="button-exit-accept"data-dismiss="modal">Ok</div>
+          </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal trip information -->
+<div class="modal fade" id="myModalTrip" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modal-trip">
+      <div class="modal-body">
+        <div class="modal-body-wrapper">
+            <div class="timer">
+                53:39
+            </div>
+             
+            <div class="ticket-info">
+                Line: <span class="thick-info">4</span>
+                <br>
+
+                End destination: <span class="thick-info">Gunnesbo</span>
+            </div>   
+
+          </div>
+          <div class="modal-footer modal-trip-footer">
+            <div class="btn-accept modal-trip-info" id="button-exit-accept"data-dismiss="modal">Okay</div>
           </div>
     </div>
     </div>
@@ -118,10 +144,7 @@
           </div>
         </div>
 
-    <div class="information-bar">
-    </div>
-
-    <div class="information-bar2">
+    <div class="information-bar" data-role="button" data-toggle="modal" data-target="#myModalTrip">
         ajajaj
     </div>
 

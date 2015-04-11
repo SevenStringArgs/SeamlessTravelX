@@ -243,3 +243,39 @@ body {
     bottom: 130px; 
     left: 19px; 
 }
+
+.modal-trip {
+	text-align: center;
+}
+
+.modal-trip-footer {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.modal-trip-info {
+	width: 150px;
+	margin: 0 auto;
+}
+
+.timer {
+	font-size: 48px;
+	font-weight: 600;
+	padding-bottom: 25px;
+	border-bottom: 2px solid #c9d7e4;
+	max-width: 150px;
+	margin: 0 auto;
+}
+
+.ticket-info {
+	display: inline-block;
+	margin: 0 auto;
+	padding-top: 25px;
+	text-align: left;
+	color: #252b31;
+	font-size: 18px;
+}
+
+.thick-info {
+	font-weight: 600;
+}
