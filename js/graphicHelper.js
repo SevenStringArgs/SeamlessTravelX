@@ -88,7 +88,7 @@ var GraphicHelper = (function(){
             }
             refillModelTemplate += '</div>' +
               '<div class="modal-footer">' +
-                '<button type="button" class="left btn-accept" id="btnReFill' + card.id + '">Re-fill card</button>' +
+                '<button type="button" class="left btn-accept" id="btnReFill' + card.id + '" data-dismiss="modal">Re-fill card</button>' +
                 '<button type="button" class="left btn-deny" data-dismiss="modal">Cancel</button>' +
               '</div>' +
             '</div>' +
