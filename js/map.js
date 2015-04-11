@@ -73,6 +73,21 @@ function Map(){
                   hMap.map.removeObject(obj);
               });
            };
+
+           hMap.addBus = function(bus){
+              this.removeBus(bus);
+              var marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: hMap.busiconRed});
+
+              marker.busId = bus.id;
+              hMap.map.addObject(marker);
+           };
+
+           hMap.removeBus = function(bus){
+              hMap.map.getObjects().forEach(function (obj) {
+              if (obj.busId === bus.id)
+                  hMap.map.removeObject(obj);
+              });
+           };
            
            return hMap;
        }

@@ -86,8 +86,8 @@
             <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-8">
-                
-                <div class="card">
+            <div class="slickslider">
+                <div class="card" id="0">
                     <div class="card-items-wrapper">
                         <div class="slider">
                             <img src="#" alt="">
@@ -96,7 +96,7 @@
                             
                            <div class="card-items">
                                 <span class="card-type-text">
-                                    Current balance:
+                                    Remaining Amount:
                                 </span>
                                 
                                 <br>
@@ -112,17 +112,44 @@
                            </div>
                     </div>
                 </div>
+                <div class="card" id="1">
+                    <div class="card-items-wrapper">
+                        <div class="slider">
+                            <img src="#" alt="">
+                            <img src="#" class="right" alt="">
+                        </div>
+                            
+                           <div class="card-items">
+                                <span class="card-type-text">
+                                    Remaining Duration:
+                                </span>
+                                
+                                <br>
 
+                                <span class="card-info">
+                                    225 kr
+                                </span>
+                               
+                                <div class="refill-button right" data-toggle="modal" data-target="#myModal">
+                                     Re-fill
+                                </div>
+                                
+                           </div>
+                    </div>
+                </div>
               </div>
+            </div>
+                </div>
               <div class="col-md-2"></div>
               
             </div>
-            
+            <div id="enterButton" data-role="button">Enter bus</div>
+            <div id="exitButton" data-role="button">Exit bus</div>
             <div class="row">
                 <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="sucess-message">
-                    <span class="message-thick">Scanned!</span> Your card is now scanned in zone: <span class="message-thick">Lund</span>
+                    <span class="message-thick"></span> 
                  </div>
               </div>
               <div class="col-md-2"></div>
@@ -158,9 +185,7 @@
                 <option value="">2</option>
                 <option value="">3</option>
             </select>
-
             <br>
-
            <label for="amount-selection">Choose amount:</label>
            <br>
             <select name="amount-selection" id="" class="amount-selection form-control">

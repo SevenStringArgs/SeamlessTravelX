@@ -1,7 +1,7 @@
 
 var BusHelper = (function(){
 
-	var listeners = {};
+	var listeners = [];
 
 	var getBuses = function(line, done){
 		console.log('Getting buses');
@@ -18,8 +18,8 @@ var BusHelper = (function(){
 				$.each(data, function (n, bus) {
 					$.each(listeners, function (n, listener) {
 						listener(bus);
-					};
-				};
+					});
+				});
 			},
 			error: function(error){
 				console.log('Got buses error');
