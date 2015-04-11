@@ -13,13 +13,20 @@ $(document).ready(function(){
 		theLi.find('.offerTag').text(offer.offer);
 	});
 
+	$('#testNotification').on('click', function(){
+		$('#dropDownImg').removeClass('glyphicon-bell');
+		$('#dropDownImg').addClass('glyphicon-info-sign');
+	});
 
-
-    $("#menu-toggle").click(function(e) {
+    $('#menu-toggle').click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+
     });
+
+    $('#notificationToggle').on('click', function(){
+    	$('#dropDownImg').addClass('glyphicon-bell');
+		$('#dropDownImg').removeClass('glyphicon-info-sign');
+    });
+   
 });
-    
-
-
