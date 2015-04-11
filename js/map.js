@@ -2,6 +2,7 @@ function Map(){
 			var hMap = {};
       var travelObj = { busId: undefined };
       hMap.filter = undefined;
+      var lastRouteNr = undefined;
 
 			function getLocation() {
 		    //get the geolocation of the device
@@ -110,6 +111,35 @@ function Map(){
               if (obj.busId === bus.id)
                   hMap.map.removeObject(obj);
               });
+           };
+
+           hMap.showBusRoute = function(line){
+            lastRouteNr = 0;
+            var busRoute = BusRouteHelper.getRoute(line);
+            var coord = busRoute.coordinates;
+            hMap.map.getObjects().forEach(function(obj){
+              if(obj.stopId){
+                lastRouteNr++;
+                hMap.map.removeObject(obj);
+              }
+            });
+
+            for(var i = 0; i < coord.length; i++){
+              var stop = coord[i];
+              if(stop.station){
+                var marker = new H.map.Marker({lng: stop.longitude, lat: stop.latitude}, {icon: hMap.busstop });
+                marker.stopId = i;
+                 hMap.map.addObject(marker);
+              }
+            }
+           };
+
+           hMap.removeLastRoute = function(){
+                hMap.map.getObjects().forEach(function(obj){
+                  if(obj.stopId){
+                    hMap.map.removeObject(obj);
+                  }
+                });
            };
 
            hMap.setTravelObj = function(obj){

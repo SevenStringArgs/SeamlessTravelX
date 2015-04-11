@@ -129,13 +129,18 @@ $(document).ready(function(){
 			console.log(e);
 			var busNr = $('.bus-search-input').val();
 			console.log(busNr);
+
+			map.removeLastRoute();
+
 			if(isNaN(busNr) || !busNr){
 				BusHelper.setRoute(undefined);
+				drawCachedBusStops(BusStopStorage.getAll());
 			} else {
 				if(!map.getTravelObject().busId){
 					map.filter = busNr;
 					BusHelper.setRoute(busNr);	
 					map.removeAllBuses();
+					map.showBusRoute(busNr);
 					setTimeout(function(buses) {
 					 	console.log("Agiain");
 					 	map.removeAllBuses();

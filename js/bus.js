@@ -81,6 +81,9 @@ var BusHelper = (function(){
 
 		setRoute: function(newRoute){
 			route = newRoute;
+		},
+		getRoute: function(){
+			return route;
 		}
 	}
 })();
