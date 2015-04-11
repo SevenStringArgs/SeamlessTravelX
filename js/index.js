@@ -38,4 +38,13 @@ $(document).ready(function(){
     $('#notificationToggle').focusout(function(){
     	$('.bus-search-input').fadeIn();
     });   
+
+    $('.bus-search-input').keypress(function(e){
+    	if(e.which === 13){
+    		alert(e);
+    		console.log(e);
+    		var busNr = $('.bus-search-input').val();
+    		console.log(busNr);
+    	}
+    });
 });
