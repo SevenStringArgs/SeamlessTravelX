@@ -47,6 +47,7 @@ body {
 	background: #409e8e;
 	height: 290px;
 	margin: 0 auto;
+	margin: 10px !important;
 	margin-top: 45px !important;
 	border-radius: 8px;
 }
@@ -219,10 +220,16 @@ body {
     border-radius: 4px;
     padding: 10px;
     position: fixed; 
-    bottom: 19px; 
+    bottom: 130px; 
     right: 19px; 
+}
 
-
-#notificationDropDown {
- 	z-index: 9995 !important;  
+.information-bar2 {
+    background: #000;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    position: fixed; 
+    bottom: 130px; 
+    left: 19px; 
 }
