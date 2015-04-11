@@ -69,7 +69,18 @@ function Map(){
                 var marker = new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: hMap.busstop});
                 marker.stopId = busStop.id;
                 hMap.map.addObject(marker);
-              }
+
+                var bubble = new H.ui.InfoBubble({
+                            lng: busStop.longitude,
+                            lat: busStop.latitude + 0.0004
+                        }, {
+                            content: '<h2>'
+                            + busStop.name + '</h2>' 
+                        });
+                        marker.addEventListener("tap", function (evt) {
+                            hMap.ui.addBubble(bubble);
+                        });
+                }
            };
 
            hMap.removeBusStop = function(busStop){
