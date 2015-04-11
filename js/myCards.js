@@ -1,20 +1,12 @@
 $(document).ready(function(){
-    var store = $.localStorage;
-    storage.set({'foo':'value,'foo2':'value2'});
-	var offers = OfferStore.get();
-	console.log(offers);
+    var cards = [{id:0, type:'cash',value:'250'},{id:1,type:'period',value:'5'}];
+	console.log(cards);
+    $.each(cards, function(key,card){
+        var template = GraphicHelper.getCardTemplate('cardItem', card)
+        console.log(template)
+    })
     $(".sucess-message").hide();
     $('.slickslider').slick();
-    
-	$.each(offers, function(key, offer){
-		var template = GraphicHelper.getTemplate('notificationItem', offer)
-		console.log(template);
-		var ul = $(document).find('#notificationDropDown');
-		$('#notificationDropDown').append(template);
-		var theLi = $('#notificationDropDown').find('#offerId-' + offer.id);
-		theLi.find('strong').text(offer.company);
-		theLi.find('.offerTag').text(offer.offer);
-	});
     
     $("#enterButton").click(function(){
         $(".sucess-message").show();

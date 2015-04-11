@@ -30,9 +30,31 @@ var GraphicHelper = (function(){
 
 		return $.parseHTML(template);
 	}
-	
+    	templates.cardItem = function(card){
 
+		var cardtemplate = 
+           '<div class="card" id="cardId-' + card.id + '">' + 
+                '<div class="card-items-wrapper">' +
+                    '<div class="slider">' +
+                        '<img src="#" alt="">' +
+                            '<img src="#" class="right" alt="">' + 
+                    '</div>' +
+                            '<div class="card-items">' +
+                                '<span class="card-type-text">' +
+                                    'Remaining Amount:' + card.value +
+                                '</span>' +
+                                '<br>' +
+                                '<span class="card-info">' +
+                                '</span>' +
+                                '<div class="refill-button right" data-toggle="modal" data-target="#myModal">' +
+                                     'Re-fill' +
+                                '</div>' + 
+                           '</div>' +
+                    '</div>' +
+               '</div>';
 
+		return $.parseHTML(cardtemplate);
+	}
 	return {
 		getStdSlick: function(){
 			return stdSlick;
@@ -52,6 +74,9 @@ var GraphicHelper = (function(){
 		},
 		getTemplate: function(template, obj){
 			return templates[template](obj);
+		},
+        getCardTemplate: function(cardtemplate, obj){
+			return templates[cardtemplate](obj);
 		}
 	}
 })();
