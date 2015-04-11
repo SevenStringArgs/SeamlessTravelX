@@ -29,11 +29,11 @@ var BusHelper = (function(){
 	};
 
 
-	var getBusRoutes = function(){
-		$.ajax({
-			url:
-		})
-	};
+	// var getBusRoutes = function(){
+	// 	$.ajax({
+	// 		url:
+	// 	})
+	// };
 
 	var startBusService = function(){
 			$.ajax({
