@@ -83,7 +83,7 @@ var BusStopStorage = (function(){
 				if(err){
 					done(err, null);
 				} else {
-					$.each(data.busStops, function(key, value){
+					$.each(data.busStopList, function(key, value){
 						addBusStop(value);
 					});
 					console.log(store.get(nsBusStopCache));
