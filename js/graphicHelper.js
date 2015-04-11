@@ -40,15 +40,15 @@ var GraphicHelper = (function(){
                             '<div class="card-items">' +
                                 '<span class="card-type-text">'; 
                                     if(card.type=='cash'){                                    
-                                    cardtemplate+='Remaining Amount: ' + '<br><span class="card-info">' + card.value + ' kr</span>';    
+                                    cardtemplate+='Remaining Amount: ' + '<br><span class="card-info' +card.id + '">' + card.value + ' </span>';    
                                     }
                                     else{
-                                    cardtemplate +='Expires in: ' + '<br><span class="card-info">' + card.value + ' days </span>';    
+                                    cardtemplate +='Expires in: ' + '<br><span class="card-info' + card.id + '">' + card.value + ' days </span>';    
                                     }
                                 cardtemplate +=    
                                 '</span>' +
                                 '<br>' +
-                                '<span class="card-info">' +
+                                '<span class="card-info-2">' +
                                 '</span>' +
                                 '<div class="refill-button right" data-toggle="modal" data-target="#myModal-' + card.id + '">' +
                                      'Re-fill' +
@@ -72,7 +72,7 @@ var GraphicHelper = (function(){
             '<div class="modal-body-wrapper">';
             if(card.type=="cash"){
                 refillModelTemplate += '<label for="amount-selection">Choose amount:</label>' +
-                '<select name="amount-selection" id="" class="amount-selection form-control">' +
+                '<select id="amount-selection' + card.id + '" class="amount-selection form-control">' +
                     '<option value="">100</option>' +
                     '<option value="">200</option>' +
                     '<option value="">300</option>' +
@@ -80,7 +80,7 @@ var GraphicHelper = (function(){
             }
             else{
                                 refillModelTemplate += '<label for="amount-selection">Choose amount of days:</label>' +
-                '<select name="amount-selection" id="" class="amount-selection form-control">' +
+                '<select id="amount-selection' + card.id + '" class="amount-selection form-control">' +
                     '<option value="">10</option>' +
                     '<option value="">30</option>' +
                     '<option value="">60</option>' +
@@ -88,7 +88,7 @@ var GraphicHelper = (function(){
             }
             refillModelTemplate += '</div>' +
               '<div class="modal-footer">' +
-                '<button type="button" class="left btn-accept" id="button-accept" data-dismiss="modal">Re-fill card</button>' +
+                '<button type="button" class="left btn-accept" id="btnReFill' + card.id + '">Re-fill card</button>' +
                 '<button type="button" class="left btn-deny" data-dismiss="modal">Cancel</button>' +
               '</div>' +
             '</div>' +
