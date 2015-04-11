@@ -63,9 +63,11 @@ function Map(){
 
 
            hMap.addBusStop = function(busStop){
-              var marker = new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: hMap.busstop});
-              marker.stopId = busStop.id;
-           		hMap.map.addObject(marker);
+              if(!travelObj.busId){
+                var marker = new H.map.Marker({lng: busStop.longitude, lat: busStop.latitude}, {icon: hMap.busstop});
+                marker.stopId = busStop.id;
+                hMap.map.addObject(marker);
+              }
            };
 
            hMap.removeBusStop = function(busStop){
@@ -97,7 +99,22 @@ function Map(){
 
            hMap.setTravelObj = function(obj){
               travelObj = obj;
-           }
+              if(travelObj.busId){
+                hMap.map.getObjects().forEach(function(obj){
+                  if(obj.stopId){
+                    hMap.map.removeObject(obj);
+                  }
+              });
+            } else {
+              var busStops =BusStopStorage.getAll();
+              for(var key in busStops){
+                this.addBusStop(busStops[key]);
+              }
+            }
+          }
+                
+      
+     
            
            return hMap;
        }
