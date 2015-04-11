@@ -1,3 +1,7 @@
+var passangerChange = function(travelObj){
+    console.log(travelObj);
+}
+
 $(document).ready(function(){
     $('.information-bar').hide();
     var onBus = false;
@@ -15,6 +19,8 @@ $(document).ready(function(){
     $('.slickslider').slick({
         dots : true
     });
+    
+
     
     $("#enterButton").click(function(){
         $(".sucess-message").show();
@@ -37,7 +43,6 @@ $(document).ready(function(){
         $("#wrapper").toggleClass("toggled");
     });
     function timerFunction(secondsToDestination) {
-        $('.information-bar').show();
         var seconds = secondsToDestination;
         var refreshIntervalId = setInterval(function(){
             var minutes =seconds/60
@@ -50,7 +55,8 @@ $(document).ready(function(){
             }
             else timestring = 'Sec: ' + seconds;
             console.log(onBus);
-            $('.information-bar').html(timestring);
+            $('.information-bsar').html(timestring);
+            $('.information-bar').show();
             seconds -= 1;
             if (onBus==false){
                 clearInterval(refreshIntervalId);
