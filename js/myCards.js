@@ -2,7 +2,9 @@ $(document).ready(function(){
 
 	var offers = OfferStore.get();
 	console.log(offers);
-
+    
+    $('.slickslider').slick();
+    
 	$.each(offers, function(key, offer){
 		var template = GraphicHelper.getTemplate('notificationItem', offer)
 		console.log(template);
@@ -12,6 +14,7 @@ $(document).ready(function(){
 		theLi.find('strong').text(offer.company);
 		theLi.find('.offerTag').text(offer.offer);
 	});
+    
 
 
 
