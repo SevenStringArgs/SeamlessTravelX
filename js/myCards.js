@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+    var store = $.localStorage;
+    storage.set({'foo':'value,'foo2':'value2'});
 	var offers = OfferStore.get();
 	console.log(offers);
     $(".sucess-message").hide();
