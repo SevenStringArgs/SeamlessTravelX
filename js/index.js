@@ -6,7 +6,7 @@ $(document).ready(function(){
 	var selectedLine = undefined;
     var onBus = false;
 	console.log(offers);
-
+    var storage = $.localStorage;
 	$.each(offers, function(key, offer){
 		var template = GraphicHelper.getTemplate('notificationItem', offer)
 		console.log(template);
@@ -61,7 +61,14 @@ $(document).ready(function(){
             $('.bus-search-input').hide();
             $('#myModalScanned').modal('show');
             $('.information-bar').show();
-            timerFunction(200);
+            timerFunction(300);
+            $('.lineid').html(travelObj.busId.charAt(3));
+            var debtAmount = storage.get('minusCash');
+            console.log("Before withdrawal:" + debtAmount);
+            debtAmount = parseInt(debtAmount) + 53;
+            console.log("After withdrawal:" + debtAmount);
+            storage.set('minusCash',debtAmount);
+            
         }  
         else {
             onBus = false;
@@ -125,11 +132,9 @@ $(document).ready(function(){
 			console.log(evt.originalEvent);
 		});
 	};
-    
     $('.information-bar').click(function(){
         $('.bus-search-input').hide();
         $('#myModalTrip').modal('show');
-        console.log("HEJ");
         
         
     });
@@ -219,17 +224,21 @@ $(document).ready(function(){
     
     function timerFunction(secondsToDestination) {
     var seconds = secondsToDestination;
+        console.log(seconds.toString.length);
     var refreshIntervalId = setInterval(function(){
         var minutes =seconds/60
         var timestring ='';
+        console.log("Stringlength" + seconds.toString.length);
         if (minutes >5){
-            timestring = 'Min: ' + parseInt(minutes);
+            timestring = parseInt(minutes);
         }
         else if(minutes > 1){
-            timestring = 'Min: ' + parseInt(minutes) + ' Sec: ' + seconds%60;
+            timestring =parseInt(minutes) + ':' + seconds%60;
         }
-        else timestring = 'Sec: ' + seconds;
+        elsetimestring = seconds;
+
         $('.information-bar').html(timestring);
+        $('.timer').html(timestring);
         seconds -= 1;
         if(!onBus){
             clearInterval(refreshIntervalId);  
