@@ -1,6 +1,7 @@
 function Map(){
 			var hMap = {};
       var travelObj = { busId: undefined };
+      hMap.filter = undefined;
 
 			function getLocation() {
 		    //get the geolocation of the device
@@ -77,8 +78,22 @@ function Map(){
               });
            };
 
+
+           var includeBus = function(bus){
+              if(this.filter){
+                return bus.id === 'bus' + this.filter + '-1' || 'bus' + this.filter + '-2';
+              }
+              return true;
+           }
+
            hMap.addBus = function(bus){
               this.removeBus(bus);
+
+              if(!includeBus(bus)){
+                this.removeBus(bus);
+                return;
+              }
+
               if(!travelObj.busId || travelObj.busId === bus.id){
 
                 var busicon = travelObj.busId ? hMap.busiconGreen : hMap.busiconRed;
@@ -111,7 +126,23 @@ function Map(){
                 this.addBusStop(busStops[key]);
               }
             }
+          };
+
+          hMap.getTravelObject = function(){
+            return travelObj;
           }
+
+          hMap.removeAllBuses = function(){
+            var buses = $.map(hMap.map.getObjects(), function(obj){
+              if(obj.busId){
+                return obj;
+              }
+            });
+
+            $.each(buses, function(key, bus){
+              hMap.map.removeObject(bus);
+            });
+          };
                 
       
      

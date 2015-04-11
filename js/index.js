@@ -141,7 +141,15 @@ $(document).ready(function(){
 			if(isNaN(busNr) || !busNr){
 				BusHelper.setRoute(undefined);
 			} else {
-				BusHelper.setRoute(busNr);
+				if(!map.getTravelObject().busId){
+					map.filter = busNr;
+					BusHelper.setRoute(busNr);	
+					map.removeAllBuses();
+					setTimeout(function(buses) {
+						console.log("Agiain");
+						map.removeAllBuses();
+					}, 2000);
+				}
 			}
 		}
 	});	
