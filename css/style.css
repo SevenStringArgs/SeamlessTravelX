@@ -169,6 +169,18 @@ body {
 	font-weight: 400;
 }
 
+.sidebar-brand {
+	line-height: 25px !important;
+	text-align: left;
+	margin-left: 15px;
+	margin-top: 15px;
+	color: #fff;
+}
+
+.username {
+	color: #40729f;
+}
+
 .sidebar-nav img {
 	margin-right: 15px;
 }
