@@ -75,8 +75,11 @@ $(document).ready(function(){
     $("#button-accept").click(function(){
         $('.bus-search-input').show();   
     })
-    
     $("#button-exit-accept").click(function(){
+        $('.bus-search-input').show();   
+    })
+    
+    $("#button-exit-accept-2").click(function(){
         $('.bus-search-input').show();   
     })
     
@@ -122,7 +125,15 @@ $(document).ready(function(){
 			console.log(evt.originalEvent);
 		});
 	};
-
+    
+    $('.information-bar').click(function(){
+        $('.bus-search-input').hide();
+        $('#myModalTrip').modal('show');
+        console.log("HEJ");
+        
+        
+    });
+    
 	$('.bus-search-input').keypress(function(e){
 		if(e.which === 13){
 			// alert(e);
