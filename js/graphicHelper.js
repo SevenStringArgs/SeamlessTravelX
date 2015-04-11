@@ -99,8 +99,8 @@ var GraphicHelper = (function(){
 	}
         templates.modalScannedItem = function (){
             var modelScannedTemplate =
-            <div class="modal fade" id="myModalScanned" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <'div class="modal-dialog">' + 
+            '<div class="modal fade" id="myModalScanned" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' + 
+              '<div class="modal-dialog">' + 
                 '<div class="modal-content">' +
                   '<div class="modal-header">' +
                     '<h4 class="modal-title" id="myModalLabel">Scanned</h4>' +
