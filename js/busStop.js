@@ -4,7 +4,7 @@ var BusStopStorage = (function(){
 	var eventPub = {};
 
 
-	var listeners = {};
+ 
 	
 	var addBusStopListeners = [];
 	var removeBustStopListeners = [];

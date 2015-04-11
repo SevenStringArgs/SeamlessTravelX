@@ -23,6 +23,10 @@ $(document).ready(function(){
 		map.addBusStop(busStop);
 	};
 
+	var drawNewBus = function(bus){
+		map.addBus(bus);
+	};
+
 	var registerMapEvents = function(map){
 		map.map.addEventListener('tap', function (evt) {
 			var rect = map.map.getViewBounds();
@@ -86,6 +90,7 @@ $(document).ready(function(){
 	drawCachedBusStops(BusStopStorage.getAll());
 	registerMapEvents(map);
 
+	BusHelper.onAddedBus(drawNewBus);
     BusHelper.start();
 
     clearInterval(loop);
