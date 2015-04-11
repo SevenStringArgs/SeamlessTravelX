@@ -40,8 +40,14 @@ var GraphicHelper = (function(){
                             '<img src="#" class="right" alt="">' + 
                     '</div>' +
                             '<div class="card-items">' +
-                                '<span class="card-type-text">' +
-                                    'Remaining Amount:' + card.value +
+                                '<span class="card-type-text">'; 
+                                    if(card.type=='cash'){                                    
+                                    cardtemplate+='Remaining Amount: ' + card.value;    
+                                    }
+                                    else{
+                                    cardtemplate +='Remaining Time: ' + card.value + ' Days';    
+                                    }
+                                cardtemplate +=    
                                 '</span>' +
                                 '<br>' +
                                 '<span class="card-info">' +
