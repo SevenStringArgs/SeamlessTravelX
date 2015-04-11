@@ -86,6 +86,8 @@ body {
 }
 
 ul.message-dropdown {
+    position: absolute;
+    right: 15px !important;
     padding: 0;
     max-height: 250px;
     overflow-x: hidden;
@@ -93,7 +95,7 @@ ul.message-dropdown {
 }
 
 li.message-preview {
-    width: 275px;
+    width: 290px;
     border-bottom: 1px solid rgba(0,0,0,.15);
 }
 

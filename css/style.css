@@ -205,3 +205,8 @@ body {
 .well {
 	padding: 0 !important;
 }
+
+
+#notificationDropDown {
+ 	z-index: 9995 !important;   
+}
