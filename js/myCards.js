@@ -4,8 +4,9 @@ $(document).ready(function(){
     $.each(cards, function(key,card){
         var template = GraphicHelper.getCardTemplate('cardItem', card)
         console.log(template)
+        $('.slickslider').append(template);
     })
-    $(".sucess-message").hide();
+    $('.sucess-message').hide();
     $('.slickslider').slick();
     
     $("#enterButton").click(function(){
