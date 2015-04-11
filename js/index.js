@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var loops = [];
 	var loop;
 	var offers = OfferStore.get();
-	var selectedLine = 3;
+	var selectedLine = undefined;
 	var map = new Map();
 	var drawOnMap = { start: undefined, end: undefined };
 	var bookmarker = new Bookmarker();
@@ -95,9 +95,9 @@ $(document).ready(function(){
 			var busNr = $('.bus-search-input').val();
 			console.log(busNr);
 			if(isNaN(busNr) || !busNr){
-				selectedLine = undefined
+				BusHelper.selectedLine = undefined
 			} else {
-				selectedLine = busNr;
+				BusHelper.selectedLine = busNr;
 			}
 		}
 	});	
@@ -146,10 +146,10 @@ $(document).ready(function(){
 	registerMapEvents(map);
 	BusHelper.start();
 
-	clearInterval(loop);
+	// clearInterval(loop);
 
 	loop = setInterval(function () {
-		BusHelper.get(selectedLine, function(err, data){
+		BusHelper.get(function(err, data){
 			if(err){
 				console.log('error getting buses');
 			} else {
@@ -157,6 +157,6 @@ $(document).ready(function(){
 			}
 		});
 	}, 150);
-	
+
 	console.log(offers);
 });

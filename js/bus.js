@@ -67,8 +67,7 @@ var BusHelper = (function(){
 
 		},
 
-		get : function(line, done){
-			selectedRoute = line;
+		get : function(done){
 			getBuses(done);
 		},
 
@@ -78,6 +77,8 @@ var BusHelper = (function(){
 
 		addTravelListener: function(e){
 			travelListeners.push(e);
-		}
+		},
+
+		selectedRoute: selectedRoute
 	}
 })();
