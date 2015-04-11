@@ -95,7 +95,7 @@ $(document).ready(function(){
 
     clearInterval(loop);
     loop = setInterval(function () {
-        BusHelper.get(3, function(err, data){
+        BusHelper.get(6, function(err, data){
 		if(err){
 				console.log('error getting buses');
 			} else {
