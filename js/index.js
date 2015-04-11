@@ -27,6 +27,11 @@ $(document).ready(function(){
     $('#notificationToggle').on('click', function(){
     	$('#dropDownImg').addClass('glyphicon-bell');
 		$('#dropDownImg').removeClass('glyphicon-info-sign');
+		$('.bus-search-input').fadeOut();
+    });
+
+    $('#notificationToggle').focusout(function(){
+    	$('.bus-search-input').fadeIn();
     });
    
 });
