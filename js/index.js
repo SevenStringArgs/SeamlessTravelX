@@ -75,6 +75,7 @@ $(document).ready(function(){
 	}
 
 	var getOff = function(){
+        
 		count = 0;
 		onBus = false;
 		map.setTravelObj({});
@@ -85,6 +86,7 @@ $(document).ready(function(){
 		  $('.information-bar').hide();
           $('.bus-search-input').hide();
           $('.current-saldo').html(storage.get('cash'));
+          $('#myModalScanned').modal('hide');
           $('#myModalExit').modal('show');
           map.removeLastRoute();
           map.showBusRoute(6);
