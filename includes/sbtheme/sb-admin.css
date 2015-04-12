@@ -87,7 +87,8 @@ body {
 
 ul.message-dropdown {
     position: absolute;
-    right: 15px !important;
+    right: 50px !important;
+    margin-left: -25px;
     padding: 0;
     max-height: 250px;
     overflow-x: hidden;
