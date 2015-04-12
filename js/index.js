@@ -69,7 +69,7 @@ $(document).ready(function(){
 		console.log('GET ON!');
 		$('.bus-search-input').hide();
         $('#myModalScanned').modal('show');
-        timerFunction(38);
+        timerFunction(15);
 	    $('.information-bar').show();
   		map.showBusRoute(6);
 	}
@@ -305,8 +305,11 @@ $(document).ready(function(){
     
     function timerFunction(secondsToDestination) {
     var seconds = secondsToDestination;
-        console.log(seconds.toString.length);
     var refreshIntervalId = setInterval(function(){
+        if(seconds.toString().charAt(0) == "-"){
+            console.log("MINUS");
+            seconds = 0;
+        }
         var minutes =seconds/60
         var timestring ='';
         if (minutes >5){
@@ -315,7 +318,12 @@ $(document).ready(function(){
         else if(minutes > 1){
             timestring =parseInt(minutes) + ':' + seconds%60;
         }
-        elsetimestring = seconds;
+        else {
+            if(seconds.toString().length == 1){
+                timestring = "00:0" + seconds.toString();
+            }
+            else timestring = "00:" + seconds.toString();
+        }
         $('.information-bar').html(timestring);
         $('.timer').html(timestring);
         seconds -= 1;
