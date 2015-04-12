@@ -112,9 +112,22 @@ function Map(){
 
               if(!travelObj.busId || travelObj.busId === bus.id){
 
-                var busicon = travelObj.busId ? hMap.busiconGreen : hMap.busiconRed;
+                var busicon = undefined;
+                var marker = undefined;
 
-                var marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: busicon});
+                if(!travelObj.busId && hMap.filter === 'bus6-1'){
+                  busicon = travelObj.busId ? hMap.busiconGreen : hMap.busiconRed;
+                  marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: busicon});
+                } else {
+                  busicon = travelObj.busId ? hMap.busiconGreen : hMap.busiconRed;
+                  marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: busicon});
+                }
+
+
+                
+              
+
+               
 
                 marker.busId = bus.id;
                 hMap.map.addObject(marker);
