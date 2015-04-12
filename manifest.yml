@@ -1,8 +1,8 @@
 applications:
 - disk_quota: 1024M
   buildpack: go_buildpack
-  host: seamlesstravelxdev
-  name: SeamlessTravelXdev
+  host: seamlesstravelx
+  name: SeamlessTravelX
   path: .
   domain: mybluemix.net
   instances: 1
