@@ -47,6 +47,7 @@ function Map(){
            hMap['busiconGreen'] = new H.map.Icon('/images/gronbuss_360.png'); 
            hMap['busiconRedEmpty'] = new H.map.Icon('/images/rodbuss1plutt.png');
            hMap['busiconRedNormal'] = new H.map.Icon('/images/rodbuss2pluttar.png');
+           hMap['rodbuss_360-bus-6'] = new H.map.Icon('/images/rodbuss_360-bus-6.png');
            hMap['busiconRedFull'] = new H.map.Icon('/images/rodbuss3pluttar.png');
            // Create a marker using the previously instantiated icon:
            // var marker = new H.map.Marker({ lat: 52.5, lng: 13.4 }, { icon: icon });
@@ -115,8 +116,8 @@ function Map(){
                 var busicon = undefined;
                 var marker = undefined;
 
-                if(!travelObj.busId && hMap.filter === 'bus6-1'){
-                  busicon = travelObj.busId ? hMap.busiconGreen : hMap.busiconRed;
+                if(!travelObj.busId && hMap.filter === '6'){
+                  busicon = hMap['rodbuss_360-bus-6'];
                   marker = new H.map.Marker({lng: bus.lon, lat: bus.lat}, {icon: busicon});
                 } else {
                   busicon = travelObj.busId ? hMap.busiconGreen : hMap.busiconRed;
