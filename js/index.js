@@ -307,7 +307,6 @@ $(document).ready(function(){
     var seconds = secondsToDestination;
     var refreshIntervalId = setInterval(function(){
         if(seconds.toString().charAt(0) == "-"){
-            console.log("MINUS");
             seconds = 0;
         }
         var minutes =seconds/60
