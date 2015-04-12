@@ -38,6 +38,7 @@ function Map(){
 
            // Create a marker icon from an image URL:
            hMap['icon'] = new H.map.Icon('http://maps.google.com/mapfiles/kml/paddle/4.png');
+           hMap['pin'] = new H.map.Icon('/images/pin.png');
            hMap['busstop'] = new H.map.Icon('/images/skyltliten.png');
            hMap['busicon'] = new H.map.Icon('/images/litenbussikon.png');
            hMap['busstopRed'] = new H.map.Icon('/images/skyltliten.png');
@@ -54,11 +55,14 @@ function Map(){
 		        navigator.geolocation.getCurrentPosition(function(pos){
               hMap.map.setZoom(15, true);
 		        	hMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
-		        	hMap.map.addObject(new H.map.Marker({lng: pos.coords.longitude, lat: pos.coords.latitude}, {icon: hMap.busstop}));
+		        	hMap.map.addObject(new H.map.Marker({lng: pos.coords.longitude, lat: pos.coords.latitude}, {icon: hMap.pin}));
 
 		        });
 		    } else {
 		        alert("Geolocation is not supported by this browser.");
+            hMap.map.setZoom(15, true);
+            hMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
+            hMap.map.addObject(new H.map.Marker({lng: 13.225035199999999, lat: 55.7165656}, {icon: hMap.pin}));
 		    }
            // Add the marker to the map:
            // map.addObject(marker);
