@@ -99,7 +99,7 @@ body {
 
 .card-type-text {
 	color: #fff;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .information-card {
@@ -290,4 +290,9 @@ body {
 
 .open>.dropdown-menu {
 	margin-right: 100px !important;
+}
+
+.header-exit-bus {
+	text-align: center;
+	color: #252c32;
 }
