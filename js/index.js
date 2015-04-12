@@ -226,6 +226,7 @@ $(document).ready(function(){
 			map.removeLastRoute();
 
 			if(isNaN(busNr) || !busNr){
+				map.filter = '';
 				BusHelper.setRoute(undefined);
 				drawCachedBusStops(BusStopStorage.getAll());
 			} else {
