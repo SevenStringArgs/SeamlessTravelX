@@ -37,6 +37,7 @@ $(document).ready(function(){
 		$('#dropDownImg').addClass('glyphicon-bell');
 		$('#dropDownImg').removeClass('glyphicon-info-sign');
 
+		$('.notified').remove();
 		if($('.bus-search-input').css('display') === 'none')
 			$('.bus-search-input').fadeIn();
 		else 
@@ -305,8 +306,10 @@ $(document).ready(function(){
     
     function timerFunction(secondsToDestination) {
     var seconds = secondsToDestination;
-        console.log(seconds.toString.length);
     var refreshIntervalId = setInterval(function(){
+        if(seconds.toString().charAt(0) == "-"){
+            seconds = 0;
+        }
         var minutes =seconds/60
         var timestring ='';
         if (minutes >5){
@@ -315,7 +318,12 @@ $(document).ready(function(){
         else if(minutes > 1){
             timestring =parseInt(minutes) + ':' + seconds%60;
         }
-        elsetimestring = seconds;
+        else {
+            if(seconds.toString().length == 1){
+                timestring = "00:0" + seconds.toString();
+            }
+            else timestring = "00:" + seconds.toString();
+        }
         $('.information-bar').html(timestring);
         $('.timer').html(timestring);
         seconds -= 1;
