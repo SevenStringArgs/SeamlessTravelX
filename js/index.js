@@ -10,6 +10,7 @@ $(document).ready(function(){
     var onBus = false;
     var count = 0;
     var storage = $.localStorage;
+    $('.information-bar').hide();
 	// console.log(offers);
 
 	$.each(offers, function(key, offer){
@@ -68,6 +69,7 @@ $(document).ready(function(){
 		console.log('GET ON!');
 		$('.bus-search-input').hide();
         $('#myModalScanned').modal('show');
+        timerFunction(200);
 	    $('.information-bar').show();
   		map.showBusRoute(6);
 	}
@@ -78,7 +80,8 @@ $(document).ready(function(){
 		map.setTravelObj({});
 		console.log('GET OFF!');
 		  $('.information-bar').hide();
-          $('.bus-search-input').hide();  
+          $('.bus-search-input').hide();
+          $('CURRENTAMOUNT-EXIT-MODAL-CONTAINER').html(storage.get('cash'));
           $('#myModalExit').modal('show');
           map.removeLastRoute();
           map.showBusRoute(6);
@@ -125,10 +128,6 @@ $(document).ready(function(){
 		traveler = travelObj;
 		console.log('Traveler');
 		console.log(traveler);
-
-
-
-
 
 		// console.log('****** Travel Changed *****')
 		// console.log(travelObj);
