@@ -2,6 +2,7 @@ $(document).ready(function(){
     $('.information-bar').hide();
     var onBus = false;
     var storage =$.localStorage;
+    if (storage.get('cash')==null || storage.get('cash')==NaN) storage.set('cash', '100');
     var cards = [{id:0, type:'cash',value:storage.get('cash')},{id:1,type:'period',value:'5'}];
     $.each(cards, function(key,card){
         var template = GraphicHelper.getCardTemplate('cardItem', card)
