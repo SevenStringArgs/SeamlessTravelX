@@ -19,7 +19,7 @@ $(document).ready(function(){
         var slickSlideId = $('.slickslider').slick('slickCurrentSlide');
         if(slickSlideId == 0){
             var addAmount = $("#amount-selection0 option:selected").text();
-            var currentAmount = $(".card-info0").text();
+            var currentAmount = storage.get('cash');
             var newAmount = parseInt(addAmount) + parseInt(currentAmount);
             $(".card-info0").empty();
             $(".card-info0").text(newAmount + " ");
