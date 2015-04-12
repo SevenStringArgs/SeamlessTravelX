@@ -10,6 +10,7 @@ $(document).ready(function(){
     var onBus = false;
     var count = 0;
     var storage = $.localStorage;
+    $('.information-bar').hide();
 	// console.log(offers);
 
 	$.each(offers, function(key, offer){
@@ -68,6 +69,7 @@ $(document).ready(function(){
 		console.log('GET ON!');
 		$('.bus-search-input').hide();
         $('#myModalScanned').modal('show');
+        timerFunction(200);
 	    $('.information-bar').show();
   		map.showBusRoute(6);
 	}
@@ -77,8 +79,12 @@ $(document).ready(function(){
 		onBus = false;
 		map.setTravelObj({});
 		console.log('GET OFF!');
+        var currentCash = storage.get('cash');
+        var newCash = parseInt(currentCash) - 53;
+        storage.set('cash',parseInt(newCash));
 		  $('.information-bar').hide();
-          $('.bus-search-input').hide();  
+          $('.bus-search-input').hide();
+          $('.current-saldo').html(storage.get('cash'));
           $('#myModalExit').modal('show');
           map.removeLastRoute();
           map.showBusRoute(6);
@@ -125,10 +131,6 @@ $(document).ready(function(){
 		traveler = travelObj;
 		console.log('Traveler');
 		console.log(traveler);
-
-
-
-
 
 		// console.log('****** Travel Changed *****')
 		// console.log(travelObj);
@@ -304,7 +306,6 @@ $(document).ready(function(){
     var refreshIntervalId = setInterval(function(){
         var minutes =seconds/60
         var timestring ='';
-        console.log("Stringlength" + seconds.toString.length);
         if (minutes >5){
             timestring = parseInt(minutes);
         }
@@ -312,7 +313,6 @@ $(document).ready(function(){
             timestring =parseInt(minutes) + ':' + seconds%60;
         }
         elsetimestring = seconds;
-
         $('.information-bar').html(timestring);
         $('.timer').html(timestring);
         seconds -= 1;

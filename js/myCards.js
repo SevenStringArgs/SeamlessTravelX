@@ -25,7 +25,7 @@ $(document).ready(function(){
             var currentAmount = storage.get('cash');
             var newAmount = parseInt(addAmount) + parseInt(currentAmount);
             $(".card-info0").empty();
-            $(".card-info0").text(newAmount + " ");
+            $(".card-info0").text(newAmount + " kr");
             storage.set('cash',parseInt(newAmount));
         }
         else console.log("Fel Slide");
