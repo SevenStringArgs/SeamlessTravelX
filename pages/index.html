@@ -28,15 +28,16 @@
     <div class="modal fade" id="myModalScanned" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Scanned</h4>
-      </div>
       <div class="modal-body">
         <div class="modal-body-wrapper">
-         <h3>Your card is now scanned!</h3>
+
+         <h3 class="scanned-header-text">
+            <img class="checkmark" src="images/icons/checkmark.png" alt="">
+            <br>
+            Your card is now scanned!</h3>
           </div>
           <div class="modal-footer">
-            <div class="left btn-accept" id="button-accept" data-dismiss="modal">Ok</div>
+            <div class="btn-accept modal-trip-info" id="button-exit-accept-2"data-dismiss="modal">Okay</div>
           </div>
     </div>
     </div>
@@ -48,16 +49,18 @@
     <div class="modal-content">
         <div class="modal-body">
         <div class="modal-body-wrapper">
-            <h4 class="header-exit-bus">Thanks for traveling with Skanetrafiken!</h4>
-         <br>
-            <span class="saldo-text">Your payment is now completed. 53 kr has been charged from your refillable card.<br>Current saldo: <b><div class="current-saldo"></div></b></span>
+            <div class="center-content">
+                <h4 class="header-exit-bus">Thanks for traveling with Skanetrafiken!</h4>
+             <br>
+                <span class="saldo-text">Your payment is now completed. 53 kr has been charged from your refillable card.<br><br>Current saldo: <b><div class="current-saldo"></div></b></span>
 
-            <br> <br> Your ticket is valid until <b>2015-04-12 15:37.</b>
-                <br> <br>
-                <h4>Welcome back!</h4>
-          </div>
-          <div class="modal-footer">
-            <div class="left btn-accept" id="button-exit-accept"data-dismiss="modal">Ok</div>
+                <br> <br> Your ticket is valid until <b>2015-04-12 15:37.</b>
+                    <br> <br>
+                    <h4>Welcome back!</h4>
+              </div>
+              <div class="modal-footer">
+                <div class="btn-accept modal-trip-info" id="button-exit-accept-2"data-dismiss="modal">Okay</div>
+              </div>
           </div>
     </div>
     </div>
