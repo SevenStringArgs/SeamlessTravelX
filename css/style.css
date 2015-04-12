@@ -301,6 +301,16 @@ body {
 	font-size: 19px;
 }
 
-.bus-tip {
-  font-size: 12px !important;
+.bus-tooltip {
+  font-size: 14px !important;
+}
+
+.notified {
+	background: #abdf6d;
+	border: 2px solid #fff;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	right: 15px;
+	border-radius: 50%;	
 }
