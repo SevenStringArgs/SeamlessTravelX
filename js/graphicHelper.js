@@ -21,7 +21,7 @@ var GraphicHelper = (function(){
 					'</span>' +
 					'<div class="media-body">' +
 						'<h5 class="media-heading"><strong class="companyName"></strong></h5>' +
-						'<p class="small text-muted"><i class="fa fa-clock-o">Yesterday at 4:32 PM</i></p>' +
+						'<p class="small text-muted"><i class="fa fa-clock-o">Today</i></p>' +
 						'<p class="offerTag"></p>' +
 					'</div>' +
 				'</div>' +
