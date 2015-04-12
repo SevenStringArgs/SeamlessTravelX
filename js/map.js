@@ -78,7 +78,7 @@ function Map(){
                             lng: busStop.longitude,
                             lat: busStop.latitude + 0.0004
                         }, {
-                            content: '<span>'
+                            content: '<span class="bus-tooltip">'
                             + busStop.name + '</span>' 
                         });
                         marker.addEventListener("tap", function (evt) {
