@@ -79,8 +79,8 @@ function Map(){
                             lng: busStop.longitude,
                             lat: busStop.latitude + 0.0004
                         }, {
-                            content: '<h2>'
-                            + busStop.name + '</h2>' 
+                            content: '<span>'
+                            + busStop.name + '</span>' 
                         });
                         marker.addEventListener("tap", function (evt) {
                             hMap.ui.addBubble(bubble);
