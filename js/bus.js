@@ -6,7 +6,7 @@ var BusHelper = (function(){
 	var route = undefined;
 	var suffix = '';
 	var getBuses = function(line, done){
-		console.log('Getting buses');
+		// console.log('Getting buses');
 		
 		suffix = line ? '/getBuses/?id=' + line: '/getAllBuses';
 
@@ -17,7 +17,7 @@ var BusHelper = (function(){
 				headers: { Accept : "application/json; charset=utf-8"}, 
 				data: {'id': line},
 				success: function(data){
-					console.log('Got bus data');
+					// console.log('Got bus data');
 
 					$.each(data, function (n, bus) {
 						if(!travelBus.busId && bus.onBus){
@@ -36,7 +36,7 @@ var BusHelper = (function(){
 					done(null, data);
 				},
 				error: function(error){
-					console.log('Got buses error');
+					// console.log('Got buses error');
 					done(error, null)	
 				}
 			}); 
@@ -48,11 +48,11 @@ var BusHelper = (function(){
 			type: 'GET',
 			headers: { Accept : "application/json; charset=utf-8"}, 
 			success: function(data){
-				console.log(data);
+				// console.log(data);
 				//done(null, data);
 			},
 			error: function(error){
-				console.log('Start bus service error');
+				// console.log('Start bus service error');
 				//done(error, null)
 			}
 		});

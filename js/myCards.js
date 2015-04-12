@@ -1,7 +1,11 @@
 $(document).ready(function(){
     $('.information-bar').hide();
     var onBus = false;
-    var cards = [{id:0, type:'cash',value:'250'},{id:1,type:'period',value:'5'}];
+    var storage =$.localStorage;
+    if (storage.isEmpty('cash')) {
+        storage.set('cash', 100);
+    }
+    var cards = [{id:0, type:'cash',value:storage.get('cash')},{id:1,type:'period',value:'5'}];
     $.each(cards, function(key,card){
         var template = GraphicHelper.getCardTemplate('cardItem', card)
         console.log(template)
@@ -18,10 +22,11 @@ $(document).ready(function(){
         var slickSlideId = $('.slickslider').slick('slickCurrentSlide');
         if(slickSlideId == 0){
             var addAmount = $("#amount-selection0 option:selected").text();
-            var currentAmount = $(".card-info0").text();
+            var currentAmount = storage.get('cash');
             var newAmount = parseInt(addAmount) + parseInt(currentAmount);
             $(".card-info0").empty();
             $(".card-info0").text(newAmount + " ");
+            storage.set('cash',parseInt(newAmount));
         }
         else console.log("Fel Slide");
 
@@ -30,22 +35,11 @@ $(document).ready(function(){
     $('#btnReFill0').click(function(){
         refillCard();
     });
-    $("#enterButton").click(function(){
-        $(".sucess-message").show();
-        $(".message-thick").text("Card Scanned!");
-        timerFunction(60);
-        onBus = true;
-    });
+    
     $("#button-accept").click(function(){
-        $("#successModal").modal();
-
-        
+        $("#successModal").modal();   
     })
-    $("#exitButton").click(function(){
-        $(".sucess-message").show();
-        $(".message-thick").text("Bus Exited!");
-        onBus = false;
-    });
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

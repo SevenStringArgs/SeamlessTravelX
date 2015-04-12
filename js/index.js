@@ -1,15 +1,20 @@
 $(document).ready(function(){
-	console.log('Ready');
+	// console.log('Ready');
 	var loops = [];
 	var loop;
 	var offers = OfferStore.get();
 	var selectedLine = undefined;
     var onBus = false;
-	console.log(offers);
+    var traveler = undefined;
+    var prevPoint = {};
+    var onBus = false;
+    var count = 0;
+    var storage = $.localStorage;
+	// console.log(offers);
 
 	$.each(offers, function(key, offer){
 		var template = GraphicHelper.getTemplate('notificationItem', offer)
-		console.log(template);
+		// console.log(template);
 		var ul = $(document).find('#notificationDropDown');
 		$('#notificationDropDown').append(template);
 		var theLi = $('#notificationDropDown').find('#offerId-' + offer.id);
@@ -42,7 +47,7 @@ $(document).ready(function(){
 		$('.bus-search-input').fadeIn();
 	});  
 
-	console.log('Ready');
+	// console.log('Ready');
 	var map = new Map();
 	var drawOnMap = { start: undefined, end: undefined };
 	var bookmarker = new Bookmarker();
@@ -52,24 +57,99 @@ $(document).ready(function(){
 		}
 	};
 
+	var showNotificationSymbol = function(){
+		$('#notificationToggle').append('<div class="notified">Notified</div>');
+	}
+
+	var getOn = function(){
+		count = 0;
+		onBus = true;
+		map.setTravelObj({busId:'bus6-1'});
+		console.log('GET ON!');
+		$('.bus-search-input').hide();
+        $('#myModalScanned').modal('show');
+	    $('.information-bar').show();
+  		map.showBusRoute(6);
+	}
+
+	var getOff = function(){
+		count = 0;
+		onBus = false;
+		map.setTravelObj({});
+		console.log('GET OFF!');
+		  $('.information-bar').hide();
+          $('.bus-search-input').hide();  
+          $('#myModalExit').modal('show');
+          map.removeLastRoute();
+          map.showBusRoute(6);
+          // drawCachedBusStops(BusStopStorage.getAll());
+          showNotificationSymbol();
+	}
+
+	var busAdded = function(bus){
+		if(bus.id === 'bus6-1'){
+			if(traveler && traveler.busId){
+				if(prevPoint.lat === bus.lat && prevPoint.lon === bus.lon && !onBus){
+
+					count++
+					console.log('Get on count' + count);
+					console.log(prevPoint.lat + " : " + bus.lat);
+					console.log(prevPoint.lon + " : " + bus.lon);
+					console.log();
+					if(count === 3){
+						getOn();
+					}
+				} else{
+					count = 0;
+					prevPoint.lat = bus.lat;
+					prevPoint.lon = bus.lon;
+				}
+			} else {
+				if(prevPoint.lat === bus.lat && prevPoint.lng === bus.lng && onBus){
+					count++
+					console.log('Get off count' + count);
+					if(count === 3){
+						getOff();
+					}
+				} else {
+					count = 0;
+					prevPoint.lat = bus.lat;
+					prevPoint.lon = bus.lon;
+				}
+			}
+		}
+	}
+
 	var travelListener = function(travelObj){
-		console.log('****** Travel Changed *****')
-		console.log(travelObj);
-		map.setTravelObj(travelObj);
-        if(travelObj.busId != undefined){
-            onBus = true;
-            $('.bus-search-input').hide();
-            $('#myModalScanned').modal('show');
-            $('.information-bar').show();
-            timerFunction(200);
-        }  
-        else {
-            onBus = false;
-            $('.information-bar').hide();
-            $('.bus-search-input').hide();  
-            $('#myModalExit').modal('show');
-                
-        };
+
+		traveler = travelObj;
+		console.log('Traveler');
+		console.log(traveler);
+
+
+
+
+
+		// console.log('****** Travel Changed *****')
+		// console.log(travelObj);
+		// map.setTravelObj(travelObj);
+  //       if(travelObj.busId != undefined){
+  //           onBus = true;
+  //           $('.bus-search-input').hide();
+  //           $('#myModalScanned').modal('show');
+  //           $('.information-bar').show();
+  //           map.showBusRoute(6);
+  //           timerFunction(200);
+  //       }  
+  //       else {
+  //           onBus = false;
+  //           $('.information-bar').hide();
+  //           $('.bus-search-input').hide();  
+  //           $('#myModalExit').modal('show');
+  //           map.removeLastRoute();
+  //           drawCachedBusStops(BusStopStorage.getAll());
+  //           showNotificationSymbol();
+  //       };
         
 	};
     $("#button-accept").click(function(){
@@ -102,12 +182,12 @@ $(document).ready(function(){
 		});
 
 		map.map.addEventListener('mapviewchangeend', function(evt){
-			console.log(evt.target)
+			// console.log(evt.target)
 			BusStopHelper.get(evt.target, function(err, data){
 				if(err){
-					console.log('error getting busstops');
+					// console.log('error getting busstops');
 				} else {
-					console.log('Got buses');
+					// console.log('Got buses');
 				}
 			});
 		});
@@ -121,15 +201,13 @@ $(document).ready(function(){
 			} else {
 				// drawOnMap.start = 
 			}
-			console.log(drawOnMap);
-			console.log(evt.originalEvent);
+			// console.log(drawOnMap);
+			// console.log(evt.originalEvent);
 		});
 	};
-    
     $('.information-bar').click(function(){
         $('.bus-search-input').hide();
         $('#myModalTrip').modal('show');
-        console.log("HEJ");
         
         
     });
@@ -137,9 +215,9 @@ $(document).ready(function(){
 	$('.bus-search-input').keypress(function(e){
 		if(e.which === 13){
 			// alert(e);
-			console.log(e);
+			// console.log(e);
 			var busNr = $('.bus-search-input').val();
-			console.log(busNr);
+			// console.log(busNr);
 
 			map.removeLastRoute();
 
@@ -153,13 +231,15 @@ $(document).ready(function(){
 					map.removeAllBuses();
 					map.showBusRoute(busNr);
 					setTimeout(function(buses) {
-					 	console.log("Agiain");
+					 	// console.log("Agiain");
 					 	map.removeAllBuses();
-					 }, 00);
+					 }, 500);
 				}
 			}
 		}
 	});	
+
+	
 
 	$('#clearLocalStorage').on('click' ,function(){
 		BusStopStorage.clearStorage();
@@ -189,7 +269,7 @@ $(document).ready(function(){
 
 	$.each(offers, function(key, offer){
 		var template = GraphicHelper.getTemplate('notificationItem', offer)
-		console.log(template);
+		// console.log(template);
 		var ul = $(document).find('#notificationDropDown');
 		$('#notificationDropDown').append(template);
 		var theLi = $('#notificationDropDown').find('#offerId-' + offer.id);
@@ -198,6 +278,7 @@ $(document).ready(function(){
 	});
 
 	BusHelper.onAddedBus(drawNewBus);
+	BusHelper.onAddedBus(busAdded);
 	BusHelper.addTravelListener(travelListener);
 	BusStopStorage.subscribeBusStopAdded(drawNewBusStop);
 	BusStopStorage.subscribeBusStopRemoved(removeBusStop);
@@ -210,26 +291,30 @@ $(document).ready(function(){
 	loop = setInterval(function () {
 		BusHelper.get(function(err, data){
 			if(err){
-				console.log('error getting buses');
+				// console.log('error getting buses');
 			} else {
-				console.log('Got buses');
+				// console.log('Got buses');
 			}
 		});
 	}, 1000);
     
     function timerFunction(secondsToDestination) {
     var seconds = secondsToDestination;
+        console.log(seconds.toString.length);
     var refreshIntervalId = setInterval(function(){
         var minutes =seconds/60
         var timestring ='';
+        console.log("Stringlength" + seconds.toString.length);
         if (minutes >5){
-            timestring = 'Min: ' + parseInt(minutes);
+            timestring = parseInt(minutes);
         }
         else if(minutes > 1){
-            timestring = 'Min: ' + parseInt(minutes) + ' Sec: ' + seconds%60;
+            timestring =parseInt(minutes) + ':' + seconds%60;
         }
-        else timestring = 'Sec: ' + seconds;
+        elsetimestring = seconds;
+
         $('.information-bar').html(timestring);
+        $('.timer').html(timestring);
         seconds -= 1;
         if(!onBus){
             clearInterval(refreshIntervalId);  
@@ -237,5 +322,5 @@ $(document).ready(function(){
     }, 1000);
     }
 
-	console.log(offers);
+	// console.log(offers);
 });
