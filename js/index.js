@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	console.log('Ready');
+	// console.log('Ready');
 	var loops = [];
 	var loop;
 	var offers = OfferStore.get();
@@ -9,11 +9,12 @@ $(document).ready(function(){
     var prevPoint = {};
     var onBus = false;
     var count = 0;
-	console.log(offers);
     var storage = $.localStorage;
+	// console.log(offers);
+
 	$.each(offers, function(key, offer){
 		var template = GraphicHelper.getTemplate('notificationItem', offer)
-		console.log(template);
+		// console.log(template);
 		var ul = $(document).find('#notificationDropDown');
 		$('#notificationDropDown').append(template);
 		var theLi = $('#notificationDropDown').find('#offerId-' + offer.id);
@@ -46,7 +47,7 @@ $(document).ready(function(){
 		$('.bus-search-input').fadeIn();
 	});  
 
-	console.log('Ready');
+	// console.log('Ready');
 	var map = new Map();
 	var drawOnMap = { start: undefined, end: undefined };
 	var bookmarker = new Bookmarker();
@@ -80,33 +81,40 @@ $(document).ready(function(){
           $('.bus-search-input').hide();  
           $('#myModalExit').modal('show');
           map.removeLastRoute();
-          drawCachedBusStops(BusStopStorage.getAll());
+          map.showBusRoute(6);
+          // drawCachedBusStops(BusStopStorage.getAll());
           showNotificationSymbol();
 	}
 
 	var busAdded = function(bus){
 		if(bus.id === 'bus6-1'){
 			if(traveler && traveler.busId){
-				if(prevPoint.lat === bus.lat && prevPoint.lng === bus.lng && !onBus){
+				if(prevPoint.lat === bus.lat && prevPoint.lon === bus.lon && !onBus){
+
 					count++
+					console.log('Get on count' + count);
+					console.log(prevPoint.lat + " : " + bus.lat);
+					console.log(prevPoint.lon + " : " + bus.lon);
+					console.log();
 					if(count === 3){
 						getOn();
 					}
 				} else{
 					count = 0;
 					prevPoint.lat = bus.lat;
-					prevPoint.lng = bus.lng;
+					prevPoint.lon = bus.lon;
 				}
 			} else {
 				if(prevPoint.lat === bus.lat && prevPoint.lng === bus.lng && onBus){
 					count++
+					console.log('Get off count' + count);
 					if(count === 3){
 						getOff();
 					}
 				} else {
 					count = 0;
 					prevPoint.lat = bus.lat;
-					prevPoint.lng = bus.lng;
+					prevPoint.lon = bus.lon;
 				}
 			}
 		}
@@ -115,6 +123,8 @@ $(document).ready(function(){
 	var travelListener = function(travelObj){
 
 		traveler = travelObj;
+		console.log('Traveler');
+		console.log(traveler);
 
 
 
@@ -172,12 +182,12 @@ $(document).ready(function(){
 		});
 
 		map.map.addEventListener('mapviewchangeend', function(evt){
-			console.log(evt.target)
+			// console.log(evt.target)
 			BusStopHelper.get(evt.target, function(err, data){
 				if(err){
-					console.log('error getting busstops');
+					// console.log('error getting busstops');
 				} else {
-					console.log('Got buses');
+					// console.log('Got buses');
 				}
 			});
 		});
@@ -191,8 +201,8 @@ $(document).ready(function(){
 			} else {
 				// drawOnMap.start = 
 			}
-			console.log(drawOnMap);
-			console.log(evt.originalEvent);
+			// console.log(drawOnMap);
+			// console.log(evt.originalEvent);
 		});
 	};
     $('.information-bar').click(function(){
@@ -205,9 +215,9 @@ $(document).ready(function(){
 	$('.bus-search-input').keypress(function(e){
 		if(e.which === 13){
 			// alert(e);
-			console.log(e);
+			// console.log(e);
 			var busNr = $('.bus-search-input').val();
-			console.log(busNr);
+			// console.log(busNr);
 
 			map.removeLastRoute();
 
@@ -221,9 +231,9 @@ $(document).ready(function(){
 					map.removeAllBuses();
 					map.showBusRoute(busNr);
 					setTimeout(function(buses) {
-					 	console.log("Agiain");
+					 	// console.log("Agiain");
 					 	map.removeAllBuses();
-					 }, 00);
+					 }, 500);
 				}
 			}
 		}
@@ -259,7 +269,7 @@ $(document).ready(function(){
 
 	$.each(offers, function(key, offer){
 		var template = GraphicHelper.getTemplate('notificationItem', offer)
-		console.log(template);
+		// console.log(template);
 		var ul = $(document).find('#notificationDropDown');
 		$('#notificationDropDown').append(template);
 		var theLi = $('#notificationDropDown').find('#offerId-' + offer.id);
@@ -281,9 +291,9 @@ $(document).ready(function(){
 	loop = setInterval(function () {
 		BusHelper.get(function(err, data){
 			if(err){
-				console.log('error getting buses');
+				// console.log('error getting buses');
 			} else {
-				console.log('Got buses');
+				// console.log('Got buses');
 			}
 		});
 	}, 1000);
@@ -312,5 +322,5 @@ $(document).ready(function(){
     }, 1000);
     }
 
-	console.log(offers);
+	// console.log(offers);
 });

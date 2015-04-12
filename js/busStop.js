@@ -34,9 +34,9 @@ var BusStopStorage = (function(){
 			busStops.count++;
 			store.set(nsBusStopCache, busStops);
 			busStopAdded(busStop);
-			console.log('Add busStop');
+			// console.log('Add busStop');
 		}
-		console.log('Has busStop');
+		// console.log('Has busStop');
 	};
 
 	var getBusStopsForPoint = function(point, done){
@@ -50,7 +50,7 @@ var BusStopStorage = (function(){
 	};
 
 	var getBusStops = function(lat, lng, done){
-		console.log('Getting busStops');
+		// console.log('Getting busStops');
 
 		$.ajax({
 			url: TravelX.url('/showStops'),
@@ -58,21 +58,21 @@ var BusStopStorage = (function(){
 			headers: { Accept : "application/json; charset=utf-8"}, 
 			data: {'lat': lat, 'lng': lng},
 			success: function(data){
-				console.log('Got busstop data');
+				// console.log('Got busstop data');
 				done(null, data);
 			},
 			error: function(error){
-				console.log('Got busstop error');
+				// console.log('Got busstop error');
 				done(error, null)
 			}
 		});
 	};
 
 	var evalCord = function(rect){
-		console.log('Right: ' + rect.getRight());
-		console.log('Left: ' + rect.getLeft());
+		// console.log('Right: ' + rect.getRight());
+		// console.log('Left: ' + rect.getLeft());
 		mapDistance = rect.getRight() - rect.getLeft(); 
-		console.log(mapDistance);
+		// console.log(mapDistance);
 		return searchDistance >= mapDistance;
 	};
 
@@ -86,7 +86,7 @@ var BusStopStorage = (function(){
 					$.each(data.busStopList, function(key, value){
 						addBusStop(value);
 					});
-					console.log(store.get(nsBusStopCache));
+					// console.log(store.get(nsBusStopCache));
 					done(null, data);
 				}
 			});
@@ -156,10 +156,10 @@ var BusStopHelper = (function(target){
 	};
 
 	var evalCord = function(rect){
-		console.log('Right: ' + rect.getRight());
-		console.log('Left: ' + rect.getLeft());
+		// console.log('Right: ' + rect.getRight());
+		// console.log('Left: ' + rect.getLeft());
 		mapDistance = rect.getRight() - rect.getLeft(); 
-		console.log(mapDistance);
+		// console.log(mapDistance);
 		return config.searchDistance >= mapDistance;
 	};
 
