@@ -214,8 +214,8 @@ body {
 
 .map {
 	position: relative;
-	top: -70px;
-	margin-bottom: -150px;
+	padding-top: 100px;
+	height: 100%;
 }
 
 .bus-search {
@@ -291,6 +291,7 @@ body {
 
 .open>.dropdown-menu {
 	margin-right: 100px !important;
+	margin-left: -50px !important;
 }
 
 .header-exit-bus {
