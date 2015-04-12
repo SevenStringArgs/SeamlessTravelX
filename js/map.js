@@ -132,6 +132,7 @@ function Map(){
             lastRouteNr = 0;
             var busRoute = BusRouteHelper.getRoute(line);
             var coord = busRoute.coordinates;
+            hMap.map.setCenter({lat: coord[0].latitude, lng: coord[0].longitude});
             hMap.map.getObjects().forEach(function(obj){
               if(obj.stopId){
                 lastRouteNr++;
