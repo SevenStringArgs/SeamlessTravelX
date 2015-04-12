@@ -331,3 +331,22 @@ body {
 .center-content {
 	text-align: center;
 }
+
+.table>thead>tr.info>th {
+	background: #252c32 !important;
+	color: #fff;
+	border: none !important;
+}
+.table>tbody>tr.info>th {
+	border: none !important;
+	color: #252c32;
+	background: #c9d7e4;
+}
+
+.red {
+	color: #a02929 !important;
+}
+
+.green {
+	color: #6aa029 !important;
+}
