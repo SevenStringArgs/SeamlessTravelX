@@ -2,7 +2,9 @@ $(document).ready(function(){
     $('.information-bar').hide();
     var onBus = false;
     var storage =$.localStorage;
-    if (storage.get('cash')==null || storage.get('cash')==NaN) storage.set('cash', '100');
+    if (storage.isEmpty('cash')) {
+        storage.set('cash', 100);
+    }
     var cards = [{id:0, type:'cash',value:storage.get('cash')},{id:1,type:'period',value:'5'}];
     $.each(cards, function(key,card){
         var template = GraphicHelper.getCardTemplate('cardItem', card)
@@ -24,7 +26,7 @@ $(document).ready(function(){
             var newAmount = parseInt(addAmount) + parseInt(currentAmount);
             $(".card-info0").empty();
             $(".card-info0").text(newAmount + " ");
-            storage.set('cash',newAmount);
+            storage.set('cash',parseInt(newAmount));
         }
         else console.log("Fel Slide");
 
