@@ -79,9 +79,12 @@ $(document).ready(function(){
 		onBus = false;
 		map.setTravelObj({});
 		console.log('GET OFF!');
+        var currentCash = storage.get('cash');
+        var newCash = parseInt(currentCash) - 53;
+        storage.set('cash',parseInt(newCash));
 		  $('.information-bar').hide();
           $('.bus-search-input').hide();
-          $('CURRENTAMOUNT-EXIT-MODAL-CONTAINER').html(storage.get('cash'));
+          $('.current-saldo').html(storage.get('cash'));
           $('#myModalExit').modal('show');
           map.removeLastRoute();
           map.showBusRoute(6);
@@ -303,7 +306,6 @@ $(document).ready(function(){
     var refreshIntervalId = setInterval(function(){
         var minutes =seconds/60
         var timestring ='';
-        console.log("Stringlength" + seconds.toString.length);
         if (minutes >5){
             timestring = parseInt(minutes);
         }
@@ -311,7 +313,6 @@ $(document).ready(function(){
             timestring =parseInt(minutes) + ':' + seconds%60;
         }
         elsetimestring = seconds;
-
         $('.information-bar').html(timestring);
         $('.timer').html(timestring);
         seconds -= 1;
