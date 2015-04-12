@@ -50,7 +50,7 @@ body {
 
 .card {
 	background: #409e8e;
-	height: 290px;
+	height: 250px;
 	margin: 0 auto;
 	position: relative;
 	margin: 10px !important;
@@ -71,7 +71,7 @@ body {
 
 .card-items {
 	position: relative;
-	top: 190px;
+	top: 170px;
 	margin-right: 15px;
 	margin-left: 15px;
 }
@@ -99,11 +99,11 @@ body {
 
 .card-type-text {
 	color: #fff;
-	font-size: 22px;
+	font-size: 16px;
 }
 
-.card-info {
-	font-size: 18px;
+.information-card {
+	font-size: 14px;
 	color: #266156;
 }
 
@@ -251,15 +251,6 @@ body {
     right: 19px; 
 }
 
-.information-bar2 {
-    background: #000;
-    color: #fff;
-    border-radius: 4px;
-    padding: 10px;
-    position: fixed; 
-    bottom: 130px; 
-    left: 19px; 
-}
 
 .modal-trip {
 	text-align: center;
@@ -295,4 +286,13 @@ body {
 
 .thick-info {
 	font-weight: 600;
+}
+
+.open>.dropdown-menu {
+	margin-right: 100px !important;
+}
+
+.header-exit-bus {
+	text-align: center;
+	color: #252c32;
 }

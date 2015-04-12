@@ -1,6 +1,14 @@
-var BusRouteHelper = new (function(){
+var BusRouteHelper = (function(){
 
 var busRoutes = [];
+
+var getRoutes = function(line){
+      for (var i = busRoutes.length - 1; i >= 0; i--) {
+      if (busRoutes[i].number==line){
+        return busRoutes[i];
+      }
+    };
+};
 
 busRoutes.push({
   "_id": "0c0ddb884cfea1b97614674e0433cf32",
@@ -273,55 +281,13 @@ busRoutes.push({
   "number": 6,
   "coordinates": [
     {
-      "longitude": 13.18761,
-      "latitude": 55.71153
-    },
-    {
-      "longitude": 13.19087,
-      "latitude": 55.71149
-    },
-    {
-      "longitude": 13.19117,
-      "latitude": 55.71144
-    },
-    {
-      "longitude": 13.19152,
-      "latitude": 55.71112,
+      "longitude": 13.19261,
+      "latitude": 55.70691,
       "station": true
     },
     {
-      "longitude": 13.19244,
-      "latitude": 55.71044
-    },
-    {
-      "longitude": 13.19291,
-      "latitude": 55.71031
-    },
-    {
-      "longitude": 13.19281,
-      "latitude": 55.70977,
-      "station": true
-    },
-    {
-      "longitude": 13.19283,
-      "latitude": 55.70916
-    },
-    {
-      "longitude": 13.19102,
-      "latitude": 55.70835,
-      "station": true
-    },
-    {
-      "longitude": 13.18931,
-      "latitude": 55.70762
-    },
-    {
-      "longitude": 13.18759,
-      "latitude": 55.70762
-    },
-    {
-      "longitude": 13.18766,
-      "latitude": 55.71089,
+      "longitude": 13.19268,
+      "latitude": 55.70494,
       "station": true
     }
   ]
@@ -596,11 +562,33 @@ busRoutes.push({
 
 return{
   getRoute : function(line){
-    for (var i = busRoutes.length - 1; i >= 0; i--) {
-      if (busRoutes[i].number==line){
-        return busRoutes[i];
+    return getRoutes(line);
+  },
+  getDestination : function(bus){
+
+    var route = getRoutes(bus.line);
+    var station;
+    var current;
+    var stationsPassed = 0;
+    var stationFound = false;
+
+    while(!stationFound){
+    for (var i = route.coordinates.length - 1; i >= 0; i--) {
+      var coordinate = route.coordinates[i];
+      if (coordinate.longitude==bus.lon && coordinate.latitude==bus.lat){
+          current = coordinate;
       }
-    };
+      else if (current && coordinate.station){
+          stationsPassed++;
+          if(stationsPassed==2){
+            station = coordinate;
+            stationFound=true;
+          }
+      }
+    }
+
+    }
+    return station;
   }
 }
 
