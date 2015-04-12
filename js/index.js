@@ -69,7 +69,7 @@ $(document).ready(function(){
 		console.log('GET ON!');
 		$('.bus-search-input').hide();
         $('#myModalScanned').modal('show');
-        timerFunction(200);
+        timerFunction(38);
 	    $('.information-bar').show();
   		map.showBusRoute(6);
 	}
