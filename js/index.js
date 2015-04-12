@@ -37,6 +37,7 @@ $(document).ready(function(){
 		$('#dropDownImg').addClass('glyphicon-bell');
 		$('#dropDownImg').removeClass('glyphicon-info-sign');
 
+		$('.notified').remove();
 		if($('.bus-search-input').css('display') === 'none')
 			$('.bus-search-input').fadeIn();
 		else 
