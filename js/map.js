@@ -60,6 +60,9 @@ function Map(){
 		        });
 		    } else {
 		        alert("Geolocation is not supported by this browser.");
+            hMap.map.setZoom(15, true);
+            hMap.map.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude});
+            hMap.map.addObject(new H.map.Marker({lng: 13.225035199999999, lat: 55.7165656}, {icon: hMap.pin}));
 		    }
            // Add the marker to the map:
            // map.addObject(marker);
