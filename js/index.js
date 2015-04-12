@@ -5,6 +5,10 @@ $(document).ready(function(){
 	var offers = OfferStore.get();
 	var selectedLine = undefined;
     var onBus = false;
+    var traveler = undefined;
+    var prevPoint = {};
+    var onBus = false;
+    var count = 0;
 	console.log(offers);
     var storage = $.localStorage;
 	$.each(offers, function(key, offer){
@@ -56,33 +60,86 @@ $(document).ready(function(){
 		$('#notificationToggle').append('<div class="notified">Notified</div>');
 	}
 
+	var getOn = function(){
+		count = 0;
+		onBus = true;
+		map.setTravelObj({busId:'bus6-1'});
+		console.log('GET ON!');
+		$('.bus-search-input').hide();
+        $('#myModalScanned').modal('show');
+	    $('.information-bar').show();
+  		map.showBusRoute(6);
+	}
+
+	var getOff = function(){
+		count = 0;
+		onBus = false;
+		map.setTravelObj({});
+		console.log('GET OFF!');
+		  $('.information-bar').hide();
+          $('.bus-search-input').hide();  
+          $('#myModalExit').modal('show');
+          map.removeLastRoute();
+          drawCachedBusStops(BusStopStorage.getAll());
+          showNotificationSymbol();
+	}
+
+	var busAdded = function(bus){
+		if(bus.id === 'bus6-1'){
+			if(traveler && traveler.busId){
+				if(prevPoint.lat === bus.lat && prevPoint.lng === bus.lng && !onBus){
+					count++
+					if(count === 3){
+						getOn();
+					}
+				} else{
+					count = 0;
+					prevPoint.lat = bus.lat;
+					prevPoint.lng = bus.lng;
+				}
+			} else {
+				if(prevPoint.lat === bus.lat && prevPoint.lng === bus.lng && onBus){
+					count++
+					if(count === 3){
+						getOff();
+					}
+				} else {
+					count = 0;
+					prevPoint.lat = bus.lat;
+					prevPoint.lng = bus.lng;
+				}
+			}
+		}
+	}
+
 	var travelListener = function(travelObj){
-		console.log('****** Travel Changed *****')
-		console.log(travelObj);
-		map.setTravelObj(travelObj);
-        if(travelObj.busId != undefined){
-            onBus = true;
-            $('.bus-search-input').hide();
-            $('#myModalScanned').modal('show');
-            $('.information-bar').show();
-            timerFunction(300);
-            $('.lineid').html(travelObj.busId.charAt(3));
-            var cash = storage.get('cash');
-            console.log("Before withdrawal:" + cash);
-            cash = parseInt(cash) - 53;
-            console.log("After withdrawal:" + cash);
-            storage.set('cash',cash);
-            map.showBusRoute(6);
-        }  
-        else {
-            onBus = false;
-            $('.information-bar').hide();
-            $('.bus-search-input').hide();  
-            $('#myModalExit').modal('show');
-            map.removeLastRoute();
-            drawCachedBusStops(BusStopStorage.getAll());
-            showNotificationSymbol();
-        };
+
+		traveler = travelObj;
+
+
+
+
+
+		// console.log('****** Travel Changed *****')
+		// console.log(travelObj);
+		// map.setTravelObj(travelObj);
+  //       if(travelObj.busId != undefined){
+  //           onBus = true;
+  //           $('.bus-search-input').hide();
+  //           $('#myModalScanned').modal('show');
+  //           $('.information-bar').show();
+  //           map.showBusRoute(6);
+  //           timerFunction(200);
+  //       }  
+  //       else {
+  //           onBus = false;
+  //           $('.information-bar').hide();
+  //           $('.bus-search-input').hide();  
+  //           $('#myModalExit').modal('show');
+  //           map.removeLastRoute();
+  //           drawCachedBusStops(BusStopStorage.getAll());
+  //           showNotificationSymbol();
+  //       };
         
 	};
     $("#button-accept").click(function(){
@@ -172,6 +229,8 @@ $(document).ready(function(){
 		}
 	});	
 
+	
+
 	$('#clearLocalStorage').on('click' ,function(){
 		BusStopStorage.clearStorage();
 	});
@@ -209,6 +268,7 @@ $(document).ready(function(){
 	});
 
 	BusHelper.onAddedBus(drawNewBus);
+	BusHelper.onAddedBus(busAdded);
 	BusHelper.addTravelListener(travelListener);
 	BusStopStorage.subscribeBusStopAdded(drawNewBusStop);
 	BusStopStorage.subscribeBusStopRemoved(removeBusStop);
