@@ -86,7 +86,7 @@ $(document).ready(function(){
         storage.set('cash',parseInt(newCash));
 		  $('.information-bar').hide();
           $('.bus-search-input').hide();
-          $('.current-saldo').html(storage.get('cash'));
+          $('.current-saldo').html(storage.get('cash') + ' kr');
           $('#myModalScanned').modal('hide');
           $('#myModalExit').modal('show');
           map.removeLastRoute();

@@ -148,6 +148,7 @@ body {
 	background: #abdf6d;
 	color: #fff;
 	box-shadow: none;
+	text-align: center;
 	border: none;
 	padding: 15px;
 	border-radius: 4px;
@@ -315,4 +316,18 @@ body {
 	position: absolute;
 	right: 15px;
 	border-radius: 50%;	
+}
+
+.scanned-header-text {
+	font-size: 24px;
+	text-align: center;
+}
+
+.checkmark {
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.center-content {
+	text-align: center;
 }
