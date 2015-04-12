@@ -59,7 +59,7 @@ $(document).ready(function(){
 	};
 
 	var showNotificationSymbol = function(){
-		$('#notificationToggle').append('<div class="notified">Notified</div>');
+		$('#notificationToggle').append('<div class="notified"></div>');
 	}
 
 	var getOn = function(){
