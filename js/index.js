@@ -1,3 +1,13 @@
+var test = false;
+var traveler = undefined;
+
+var toggleTest = function(){
+	test = !test;
+	traveler = {};
+	traveler.busId = test ? 'bus6-1' : undefined;
+}
+
+
 $(document).ready(function(){
 	// console.log('Ready');
 	var loops = [];
@@ -5,7 +15,7 @@ $(document).ready(function(){
 	var offers = OfferStore.get();
 	var selectedLine = undefined;
     var onBus = false;
-    var traveler = undefined;
+    traveler = undefined;
     var prevPoint = {};
     var onBus = false;
     var count = 0;
